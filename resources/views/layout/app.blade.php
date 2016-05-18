@@ -56,15 +56,15 @@
                 <div class="form-group">
                     <input type="text" name="search" class="form-control" placeholder="Search">
                 </div>
-                <button type="submit"  class="btn btn-primary glyphicon glyphicon-search"></></button>
+                <button type="submit"  class="btn btn-primary glyphicon glyphicon-search"></button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerencia<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{!! url('user')!!}">Usuario</a></li>
                         <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
-                        <li><a href="{{ url('/admin/category/') }}">Serviços</a></li>
+                        <li><a href="{{ url('/admin/service/') }}">Serviços</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Sair</a></li>
                     </ul>
