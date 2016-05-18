@@ -40,7 +40,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">Home</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Admin</a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -57,11 +57,11 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Login</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="{!! url('user/login')!!}">Login</a></li>
+                        <li><a href="{!! url('user')!!}">Usuario</a></li>
+                        <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Separated link</a></li>
                     </ul>
