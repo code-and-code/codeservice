@@ -4,7 +4,7 @@
 
 #### 1 - Dependências do Projeto
 
-Requisitos help -> https://github.com/angelo-ti/dependencias
+Requisitos help -> https://github.com/angelobiscola/config-ambient
 
     php 5.5.9+
     composer
