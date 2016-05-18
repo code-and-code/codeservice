@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="row">
+
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -45,26 +46,25 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Comandos  <a href="{!! route('command.create',['id'=>$category]) !!}" title="Nova categoria" ><i class="pull-right glyphicon glyphicon-plus"></i></a></div>
+                <div class="panel-heading">Serviços  <a href="{!! route('service.create',['id'=>$category]) !!}" title="Novo serviço" ><i class="pull-right glyphicon glyphicon-plus"></i></a></div>
                 <div class="panel-body">
 
                     <div class="panel-body">
                         <table class="table table-hover">
                             <thead>
                             <th>Nome</th>
-                            <th>Categoria</th>
+                            <th>Comandos</th>
                             <th>#</th>
                             </thead>
                             <tbody>
-                            @foreach($category->Commands as $command)
+                            @foreach($category->Services as $service)
 
                                 <tr>
-                                    <td>{!! $command->name !!}</td>
-                                    <td>{!! $command->Category->name !!}</td>
+                                    <td>{!! $service->name !!}</td>
+                                    <td>{!! $service->Commands->count() !!}</td>
                                     <td>
-                                        <a href="{!! route('command.edit',['id' => $command])!!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
-                                        <a href="{!! route('command.delete',['id' => $command])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
+                                        <a href="{!! route('service.edit',['id' => $service])!!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a href="{!! route('service.delete',['id' => $service])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
                                     </td>
                                 </tr>
 
