@@ -36,7 +36,7 @@ Para inicar o APP php artisan
 
     php artisan serve -> http://localhost:8000
     php artisan server --host "ip" --port "30" -> http://ip:port
-    php -S locahost:8090 -t ./public/
+    php -S localhost:8090 -t ./public/
 
 ## Configuracao .env
 
