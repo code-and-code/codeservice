@@ -11,7 +11,7 @@
                         <thead>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Commandos</th>
+                        <th>Serviços</th>
                         <th>#</th>
                         </thead>
                         <tbody>
@@ -19,10 +19,10 @@
                                 <tr>
                                     <td>{!! $category->id !!}</td>
                                     <td>{!! $category->name !!}</td>
-                                    <td>{!! $category->Commands->count() !!}</td>
+                                    <td>{!! $category->Services->count() !!}</td>
                                     <td>
                                         <a href="{!! route('category.edit',['id' => $category])  !!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
-                                        <a href="{!! route('command.create',['id'=> $category])  !!}" title="Novo comando"><i class="glyphicon glyphicon-flash"></i></a>
+                                        <a href="{!! route('service.create',['id'=> $category])  !!}" title="Novo comando"><i class="glyphicon glyphicon-tint"></i></a>
                                         <a href="{!! route('category.delete',['id' => $category])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
                                     </td>
                                 </tr>

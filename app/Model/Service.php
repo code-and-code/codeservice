@@ -12,4 +12,9 @@ class Service extends Model
     {
        return $this->belongsTo(Category::class);
     }
+
+    public function Commands()
+    {
+        return $this->hasMany(Command::class);
+    }
 }

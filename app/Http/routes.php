@@ -26,13 +26,23 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], fu
     $app->get('category/{id}/display',  [ 'as' => 'category.display',        'uses' => 'CategoryController@display'     ]);
 
 
+
+    $app->get('service/',              [ 'as' => 'service.index',         'uses' => 'ServiceController@index'        ]);
+    $app->get('service/create/{id}',   [ 'as' => 'service.create',        'uses' => 'ServiceController@create'       ]);
+    $app->post('service/store',        [ 'as' => 'service.store',         'uses' => 'ServiceController@store'        ]);
+    $app->get('service/show',          [ 'as' => 'service.show',          'uses' => 'ServiceController@show'         ]);
+    $app->get('service/{id}/edit',     [ 'as' => 'service.edit',          'uses' => 'ServiceController@edit'         ]);
+    $app->post('service/{id}/update',  [ 'as' => 'service.update',        'uses' => 'ServiceController@update'       ]);
+    $app->get('service/{id}/delete',   [ 'as' => 'service.delete',        'uses' => 'ServiceController@delete'       ]);
+
+
     $app->post('command/store',         [ 'as' => 'command.store',            'uses' => 'CommandController@store'       ]);
     $app->get('command/create/{id}',    [ 'as' => 'command.create',           'uses' => 'CommandController@create'      ]);
     $app->get('command/show/{id}',      [ 'as' => 'command.show',             'uses' => 'CommandController@show'        ]);
     $app->get('command/{id}/edit',      [ 'as' => 'command.edit',             'uses' => 'CommandController@edit'        ]);
     $app->post('command/{id}/update',   [ 'as' => 'command.update',           'uses' => 'CommandController@update'      ]);
     $app->get('command/{id}/delete',    [ 'as' => 'command.delete',           'uses' => 'CommandController@delete'      ]);
-    $app->get('command/exec/{id}',      [ 'as' => 'command.exec',             'uses' => 'CommandController@exec'      ]);
+    $app->get('command/exec/{id}',      [ 'as' => 'command.exec',             'uses' => 'CommandController@exec'        ]);
 
 
 });

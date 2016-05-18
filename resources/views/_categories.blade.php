@@ -16,12 +16,12 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                @foreach($category->Commands as $command)
+                                @foreach($category->Services as $service)
 
                                     <tr>
-                                        <td>{!! $command->name !!}</td>
+                                        <td>{!! $service->name !!}</td>
                                         <td>
-                                            <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
+                                            <a href="{!! route('command.exec',['id' => $service])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
                                          </td>
                                     </tr>
 
