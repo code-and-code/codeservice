@@ -1,11 +1,11 @@
-@foreach($categories as $category)
+@foreach($services as $service)
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="bs-example" data-example-id="contextual-panels">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"> {!! $category->name !!} </h3>
+                            <h3 class="panel-title"> {!! $service->name !!} </h3>
                             <!--<i class="glyphicon glyphicon-share"></i>-->
                         </div>
 
@@ -16,12 +16,12 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                @foreach($category->Services as $service)
+                                @foreach($service->Commands as $command)
 
                                     <tr>
-                                        <td>{!! $service->name !!}</td>
+                                        <td>{!! $command->name !!}</td>
                                         <td>
-
+                                            <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
                                          </td>
                                     </tr>
 

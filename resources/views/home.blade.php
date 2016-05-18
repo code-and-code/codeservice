@@ -2,6 +2,8 @@
 
 @section('content')
 
-    @include('_categories',['categories' => $categories])
+
+    @include('_'.$action,[$action => $data])
+
 
 @endsection

@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
-use Illuminate\Support\Facades\Request;
+use App\Model\Service;
+
 
 class HomeController extends Controller
 {
     public function __construct()
     {
+
     }
 
     public function index()
     {
-        $categories = Category::where('show','=',true, 'and', 'action', '=', true)->get();
+       return redirect()->to('/categories');
+    }
 
-        return view('home')->with('categories', $categories);
+    public function getCategories()
+    {
+        $categories = Category::where('show','=',true, 'and', 'action', '=', true)->get();
+        return view('home')->with('action', 'categories')->with('data', $categories);
+    }
+
+    public function getServices()
+    {
+        $services = Service::all();
+        return view('home')->with('action', 'services')->with('data', $services);
     }
 }

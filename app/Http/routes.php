@@ -9,7 +9,9 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/', [ 'as' => 'home', 'uses' => 'HomeController@index']);
+$app->get('/',           [ 'as' => 'home',       'uses' => 'HomeController@index']);
+$app->get('/categories', [ 'as' => 'categories', 'uses' => 'HomeController@getCategories']);
+$app->get('/services',   [ 'as' => 'services',   'uses' => 'HomeController@getServices']);
 
 $app->get('/user',              [ 'as' => 'user.index',               'uses' => 'UserController@index']);
 $app->get('/user/login',        [ 'as' => 'user.login',               'uses' => 'UserController@login']);
@@ -17,6 +19,8 @@ $app->get('/user/create',       [ 'as' => 'user.create',               'uses' =>
 $app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
+
+
 
     $app->get('category/',              [ 'as' => 'category.index',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/create',        [ 'as' => 'category.create',        'uses' => 'CategoryController@create'       ]);
