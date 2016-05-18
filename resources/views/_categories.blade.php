@@ -1,38 +1,12 @@
 @foreach($categories as $category)
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="bs-example" data-example-id="contextual-panels">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"> {!! $category->name !!} </h3>
-                            <!--<i class="glyphicon glyphicon-share"></i>-->
-                        </div>
+    <div class="list-group">
+        <a href="" class="list-group-item active">
+            <h4 class="list-group-item-heading">{!! $category->name !!} </h4>
+            <p class="list-group-item-text">Total de Serviços {!! $category->Services->count() !!}</p>
+        </a>
+    </div>
 
-                        <div class="panel-body">
-                            <table class="table">
-                                <thead>
-                                <th>Nome</th>
-                                <th></th>
-                                </thead>
-                                <tbody>
-                                @foreach($category->Services as $service)
-
-                                    <tr>
-                                        <td>{!! $service->name !!}</td>
-                                        <td>
-
-                                         </td>
-                                    </tr>
-
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
 
 @endforeach
+
