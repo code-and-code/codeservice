@@ -11,6 +11,10 @@
 */
 $app->get('/', [ 'as' => 'home', 'uses' => 'HomeController@index']);
 
+$app->get('/user',              [ 'as' => 'user.index',               'uses' => 'UserController@index']);
+$app->get('/user/login',        [ 'as' => 'user.login',               'uses' => 'UserController@login']);
+$app->get('/user/create',       [ 'as' => 'user.create',               'uses' => 'UserController@create']);
+$app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
 
@@ -47,11 +51,8 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], fu
 
 });
 
-$app->group(['namespace' => 'App\Http\Controllers\User', 'prefix' => 'user'], function ($app)
-{
-    $app->get('user/',                  [ 'as' => 'user.index',               'uses' => 'UserController@index'          ]);
-    $app->get('user/create',            [ 'as' => 'user.create',              'uses' => 'UserController@create'         ]);
-    $app->get('user/store',             [ 'as' => 'user.store',               'uses' => 'UserController@store'          ]);
-    $app->get('user/show/{id}',         [ 'as' => 'user.show',                'uses' => 'UserController@show'           ]);
-    $app->get('user/{id}/edit',         [ 'as' => 'user.edit',                'uses' => 'UserController@edit'           ]);
-});
+
+
+
+
+
