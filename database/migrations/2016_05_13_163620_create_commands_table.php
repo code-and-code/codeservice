@@ -12,7 +12,10 @@ class CreateCommandsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('command');
-            $table->integer('category_id');
+
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
