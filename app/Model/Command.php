@@ -5,11 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Command extends Model
 {
-    protected $fillable = ['name', 'command','category_id'];
+    protected $fillable = ['name', 'command','service_id'];
     protected $hidden   = ['updated_at'];
 
-    public function Category()
+    public function Service()
     {
-       return $this->belongsTo(Category::class);
+       return $this->belongsTo(Service::class);
     }
 }

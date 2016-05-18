@@ -8,10 +8,9 @@ class Category extends Model
     protected $fillable = ['name'];
     protected $hidden   = ['updated_at'];
 
-
-    public function Commands()
+    public function Services()
     {
-        return $this->hasMany(Command::class);
+        return $this->hasMany(Service::class);
     }
 
 }
