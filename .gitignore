@@ -1,0 +1,13 @@
+/vendor
+/node_modules
+/public/bower_components
+
+/storage/debugbar
+/storage/database.sqlite
+/database/database.sqlite
+
+.idea/
+composer.phar
+Homestead.yaml
+Homestead.json
+.env
