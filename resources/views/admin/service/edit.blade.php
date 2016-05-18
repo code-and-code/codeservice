@@ -30,6 +30,40 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">Comandos  <a href="{!! route('command.create',['id'=>$service]) !!}" title="Nova categoria" ><i class="pull-right glyphicon glyphicon-plus"></i></a></div>
+            <div class="panel-body">
+
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>Nome</th>
+                        <th>#</th>
+                        </thead>
+                        <tbody>
+                        @foreach($service->Commands as $command)
+
+                            <tr>
+                                <td>{!! $command->name !!}</td>
+                                <td>
+                                    <a href="{!! route('command.edit',['id' => $command])!!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
+                                    <a href="{!! route('command.delete',['id' => $command])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 @endsection

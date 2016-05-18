@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a href="{!! route('category.edit', ['id'=>$id]) !!}"> Comandos </a> | Criar</div>
+                    <div class="panel-heading"><a href="{!! route('service.edit', ['id'=>$id]) !!}"> Comandos </a> | Criar</div>
                     <div class="panel-body">
 
                         <form method="post" action="{!! route('command.store') !!}" class="form-horizontal">
-                                <input type="hidden" name="category_id" value="{!! $id !!}"/>
+                                <input type="hidden" name="service_id" value="{!! $id !!}"/>
 
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>

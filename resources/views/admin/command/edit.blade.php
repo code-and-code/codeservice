@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="{!! route('category.edit', ['id'=>$command]) !!}"> Comando </a> | Editar</div>
+                <div class="panel-heading"><a href="{!! route('service.edit', ['id'=>$command]) !!}"> Comando </a> | Editar</div>
                 <div class="panel-body">
 
                     <form method="post" action="{!! route('command.update',['id' => $command]) !!}" class="form-horizontal" role = 'form'>
