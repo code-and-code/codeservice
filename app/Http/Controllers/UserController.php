@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-class User extends Controller
-{
+use App\Model\User;
+use Illuminate\Http\Request;
 
+class UserController extends Controller
+{
     protected $user;
 
     public function __construct(User $user)
@@ -14,17 +16,24 @@ class User extends Controller
 
     public function index()
     {
-        return "lista";
+        return view("user.index")->with('users', $this->user->all());
+    }
+
+    public function login()
+    {
+        return view('user.login');
     }
 
     public function create()
     {
-        return "create";
+        return view('user.create');
     }
 
-    public function store()
+    public function store(Request $resquest)
     {
-        return "store - (Create)";
+        dd($resquest);
+        $user = $this->user->create($resquest->all());
+        dd($user);
     }
 
     public function show()
@@ -34,12 +43,7 @@ class User extends Controller
 
     public function update()
     {
-        return "Update";
-    }
 
-    public function login()
-    {
-        return "login";
     }
 
     public function logout()
