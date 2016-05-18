@@ -33,8 +33,6 @@ class UserController extends Controller
     {
         $user = $this->user->create($resquest->all());
         dd($user);
-        $this->user->create($resquest->all());
-        dd($user);
     }
 
     public function show($id)
