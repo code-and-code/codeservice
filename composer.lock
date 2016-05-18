@@ -4,9 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a8c6b190951f6830958425b3b7b563ee",
-    "content-hash": "31efe92f05bf5b5791c0ce968c43e846",
+    "hash": "38698fb8dd074cad1d609611fc04797a",
+    "content-hash": "110e379e061899852d4f938517133d37",
     "packages": [
+        {
+            "name": "cocur/background-process",
+            "version": "v0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocur/background-process.git",
+                "reference": "e223946f090c9bf8b66c546d1fd0a74890ef78a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocur/background-process/zipball/e223946f090c9bf8b66c546d1fd0a74890ef78a6",
+                "reference": "e223946f090c9bf8b66c546d1fd0a74890ef78a6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cocur\\BackgroundProcess\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Start processes in the background that continue running when the PHP process exists.",
+            "keywords": [
+                "background",
+                "process",
+                "unix"
+            ],
+            "time": "2015-10-24 17:38:37"
+        },
         {
             "name": "danielstjules/stringy",
             "version": "1.10.0",

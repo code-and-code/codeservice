@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Command;
 use Illuminate\Http\Request;
+use Cocur\BackgroundProcess\BackgroundProcess;
 
 class CommandController extends Controller
 {
@@ -67,9 +68,19 @@ class CommandController extends Controller
     public function exec ($id)
     {
         try {
+
             $command = $this->command->findOrFail($id);
-            exec($command->command);
-            return redirect()->back();;
+            $process = new BackgroundProcess($command->command);
+            $process->run();
+
+            $msg[] = sprintf('Crunching numbers in process %d', $process->getPid());
+            while ($process->isRunning()) {
+                      sleep(1);
+            }
+            $msg[]= "\nDone.\n";
+
+            return redirect()->back()->with('cmd',$msg);
+
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', ' ');
