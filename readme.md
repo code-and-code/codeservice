@@ -16,8 +16,7 @@ Instalação
 Para instalar as dependências do projeto, execute o seguinte comando:
 
     composer install
-    cp .env.example .env
-
+   
 #### 3 - Migrações
 
 Para criar as tabelas necessárias, basta rodar o comando:
@@ -41,6 +40,8 @@ Para inicar o APP php artisan
 
 ## Configuracao .env
 
+Para criar arquivo .env, basta rodar o comando:  cp .env.example .env 
+    
     APP_ENV=local
     APP_DEBUG=false
     APP_KEY=SomeRandomKey!!!
