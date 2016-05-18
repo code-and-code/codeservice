@@ -31,14 +31,17 @@ class UserController extends Controller
 
     public function store(Request $resquest)
     {
-        dd($resquest);
         $user = $this->user->create($resquest->all());
+        dd($user);
+        $this->user->create($resquest->all());
         dd($user);
     }
 
-    public function show()
+    public function show($id)
     {
-        return "find() - Show one";
+        $user = $this->user->find($id);
+        dd($user);
+        return $user;
     }
 
     public function update()
@@ -51,9 +54,9 @@ class UserController extends Controller
         return "Logout";
     }
 
-    public function delete()
+    public function delete($id)
     {
-        return "Delete";
+        $user = $this->user->find($id);
     }
 
 }

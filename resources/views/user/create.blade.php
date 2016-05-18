@@ -20,13 +20,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="email"/>
+                                    <input type="email" class="form-control" name="email" required autofocus/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Senha</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" name="password"/>
+                                    <input type="password" class="form-control" name="password" required/>
                                 </div>
                             </div>
                             <div class="form-group">
