@@ -1,21 +1,48 @@
 # Manage service servers developed with -> Lumen PHP Framework v5.1
 
+## Instalação
 
-## Install
+#### 1 - Dependências do Projeto
 
-    https://github.com/code-and-code/interface-admin.git
+Requisitos help -> https://github.com/angelo-ti/dependencias
+
+    php 5.5.9+
+    composer
+
+Instalação
+
+#### 2 - Dependências do Projeto
+
+Para instalar as dependências do projeto, execute o seguinte comando:
+
     composer install
-    cp .env.example .env [Config Env]
+    cp .env.example .env
+
+#### 3 - Migrações
+
+Para criar as tabelas necessárias, basta rodar o comando:
+
     touch database/database.sqlite
     php artisan migrate
 
-    key generate 32 bits [http://textmechanic.com/text-tools/randomization-tools/random-string-generator/]
+#### 4 - Gerar Key
+
+Precismos de uma key 32 bits, pode usar seguinte site
+
+    http://textmechanic.com/text-tools/randomization-tools/random-string-generator/
+
+#### 5 - Server Start
+
+Para inicar o APP php artisan
+
+    php artisan serve -> http://localhost:8000
+    php artisan server --host "ip" --port "30" -> http://ip:port
     php -S locahost:8090 -t ./public/
 
-## Config Env
+## Configuracao .env
 
     APP_ENV=local
-    APP_DEBUG=true
+    APP_DEBUG=false
     APP_KEY=SomeRandomKey!!!
 
     AUTH_DRIVE=eloquent
@@ -23,7 +50,6 @@
     AUTH_TABLE=users
 
     DB_CONNECTION=sqlite
-    DB_FILE=db.sql
 
     SESSION_DRIVER=cookie
     CACHE_DRIVER=file
