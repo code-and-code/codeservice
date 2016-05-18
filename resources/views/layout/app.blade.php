@@ -40,13 +40,16 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">Admin</a>
+            <a class="navbar-brand" href="{{ url('/') }}"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
+                <li><a href="{{ url('/categories/') }}">Categorias</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url('/services/') }}">Serviços</a></li>
             </ul>
 
             <form method="post" action="{!! route('category.search') !!}" class="navbar-form navbar-left" role="search">
@@ -59,11 +62,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{!! url('user/login')!!}">Login</a></li>
                         <li><a href="{!! url('user')!!}">Usuario</a></li>
                         <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
+                        <li><a href="{{ url('/admin/category/') }}">Serviços</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">Sair</a></li>
                     </ul>
                 </li>
             </ul>
