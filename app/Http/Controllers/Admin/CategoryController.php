@@ -48,6 +48,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+
         return view("admin.category.index")->with('categories', $this->category->paginate(10));
     }
 

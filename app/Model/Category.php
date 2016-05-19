@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'show'];
     protected $hidden   = ['updated_at'];
 
     public function Services()

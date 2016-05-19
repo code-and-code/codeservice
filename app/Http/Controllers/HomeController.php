@@ -20,7 +20,8 @@ class HomeController extends Controller
 
     public function getCategories()
     {
-        $categories = Category::where('show','=',true, 'and', 'action', '=', true)->get();
+
+        $categories = Category::where('show', 1)->where('active', 1)->get();
         return view('home')->with('action', 'categories')->with('data', $categories);
     }
 

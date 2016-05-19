@@ -21,7 +21,6 @@ $app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
 
 
-
     $app->get('category/',              [ 'as' => 'category.index',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/create',        [ 'as' => 'category.create',        'uses' => 'CategoryController@create'       ]);
     $app->post('category/store',        [ 'as' => 'category.store',         'uses' => 'CategoryController@store'        ]);
@@ -34,14 +33,13 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], fu
     $app->get('category/{id}/display',  [ 'as' => 'category.display',        'uses' => 'CategoryController@display'     ]);
 
 
-
-    $app->get('service/',              [ 'as' => 'service.index',         'uses' => 'ServiceController@index'        ]);
-    $app->get('service/create/{id}',   [ 'as' => 'service.create',        'uses' => 'ServiceController@create'       ]);
-    $app->post('service/store',        [ 'as' => 'service.store',         'uses' => 'ServiceController@store'        ]);
-    $app->get('service/show',          [ 'as' => 'service.show',          'uses' => 'ServiceController@show'         ]);
-    $app->get('service/{id}/edit',     [ 'as' => 'service.edit',          'uses' => 'ServiceController@edit'         ]);
-    $app->post('service/{id}/update',  [ 'as' => 'service.update',        'uses' => 'ServiceController@update'       ]);
-    $app->get('service/{id}/delete',   [ 'as' => 'service.delete',        'uses' => 'ServiceController@delete'       ]);
+    $app->get('service/',               [ 'as' => 'service.index',          'uses' => 'ServiceController@index'         ]);
+    $app->get('service/create/{id}',    [ 'as' => 'service.create',         'uses' => 'ServiceController@create'        ]);
+    $app->post('service/store',         [ 'as' => 'service.store',          'uses' => 'ServiceController@store'         ]);
+    $app->get('service/show',           [ 'as' => 'service.show',           'uses' => 'ServiceController@show'          ]);
+    $app->get('service/{id}/edit',      [ 'as' => 'service.edit',           'uses' => 'ServiceController@edit'          ]);
+    $app->post('service/{id}/update',   [ 'as' => 'service.update',         'uses' => 'ServiceController@update'        ]);
+    $app->get('service/{id}/delete',    [ 'as' => 'service.delete',         'uses' => 'ServiceController@delete'        ]);
 
 
     $app->post('command/store',         [ 'as' => 'command.store',            'uses' => 'CommandController@store'       ]);
