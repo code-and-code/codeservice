@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="{!! route('user.index') !!}"> Ususarios </a> | Criar
+                        <a href="{!! route('user.index') !!}"> Usuarios </a> | Criar
                     </div>
                     <div class="panel-body">
 
@@ -26,12 +26,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Senha</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" name="password" required/>
+                                    <input type="password" class="form-control" name="password" min="5" max="10" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-check"></i>Salvar</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-btn fa-check"></i>Criar</button>
                                 </div>
                             </div>
 

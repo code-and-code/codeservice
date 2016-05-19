@@ -55,7 +55,7 @@ class UserController extends Controller
     public function store(Request $resquest)
     {
         $this->user->create($resquest->all());
-        return redirect()->back()->with('status', 'Usuario Cadastrado');
+        return redirect()->back()->with('status', 'Salvo');
     }
 
     public function update($id, Request $request)
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function delete($id)
     {
         try{
-            $this->user->find($id)->delete($id);
+            $this->user->find($id)->delete();
             return redirect(route('user.index'))->With('status', 'Salvo');
         }catch (\Exception $e){
             return redirect(route('user.index'))->with('error', '');

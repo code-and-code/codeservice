@@ -72,11 +72,14 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = $this->validation($request->all());
+
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         } else {
             $this->category->create($request->all());
+
             return redirect(route('category.index'))->with('status', 'Salvo');
         }
     }
@@ -104,7 +107,7 @@ class CategoryController extends Controller
     public function delete($id)
     {
         try {
-            $this->category->findOrFail($id)->delete();
+            $this->category->find($id)->delete();
             return redirect()->back()->with('status', 'Excluido');
         } catch (\Exception $e) {
             return redirect(route('category.index'))->with('error', ' ');
