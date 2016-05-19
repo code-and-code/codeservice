@@ -30,4 +30,10 @@ class HomeController extends Controller
         $services = Service::all();
         return view('home')->with('action', 'services')->with('data', $services);
     }
+
+    public function getService($id)
+    {
+        $service = Service::find($id);
+        return view('admin.service.show',compact('service'));
+    }
 }

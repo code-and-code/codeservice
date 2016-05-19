@@ -12,4 +12,9 @@ class Command extends Model
     {
        return $this->belongsTo(Service::class);
     }
+
+    public function Task()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

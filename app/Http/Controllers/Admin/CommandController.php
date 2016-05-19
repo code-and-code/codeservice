@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Command;
 use Illuminate\Http\Request;
 use Cocur\BackgroundProcess\BackgroundProcess;
+use Symfony\Component\Process\Process;
 
 class CommandController extends Controller
 {
@@ -70,19 +71,20 @@ class CommandController extends Controller
         try {
 
             $command = $this->command->findOrFail($id);
+
             $process = new BackgroundProcess($command->command);
             $process->run();
 
-            $msg[] = sprintf('Crunching numbers in process %d', $process->getPid());
+            $msg[] = sprintf('Processo %d', $process->getPid());
             while ($process->isRunning()) {
                       sleep(1);
             }
-            $msg[]= "\nDone.\n";
-
+            $msg[]= "\nFeito.\n";
             return redirect()->back()->with('cmd',$msg);
 
 
         } catch (\Exception $e) {
+
             return redirect()->back()->with('error', ' ');
         }
 
