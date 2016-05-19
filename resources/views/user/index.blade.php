@@ -10,6 +10,7 @@
                     <table class="table table-hover">
                         <thead>
                         <th>Nome</th>
+                        <th>Email</th>
                         <th>#</th>
                         </thead>
                         <tbody>
@@ -17,10 +18,10 @@
                             @foreach($users as $user)
                             <tr>
                                 <td>{!! $user->name !!}</td>
+                                <td>{!! $user->email !!}</td>
                                 <td>
-                                    <a href="{!! route('user.edit', ['id'=>$user]) !!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
-                                    <a href="" title="Novo comando"><i class="glyphicon glyphicon-flash"></i></a>
-                                    <a href="" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
+                                    <a href="{!! route('user.edit',['id' => $user]) !!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a href="{!! route('user.delete',['id'=>$user]) !!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach

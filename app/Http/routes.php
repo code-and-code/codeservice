@@ -18,7 +18,9 @@ $app->get('/user',              [ 'as' => 'user.index',               'uses' => 
 $app->get('/user/login',        [ 'as' => 'user.login',               'uses' => 'UserController@login']);
 $app->get('/user/create',       [ 'as' => 'user.create',              'uses' => 'UserController@create']);
 $app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
-$app->post('/user/{id}/edit',    [ 'as' => 'user.edit',               'uses' => 'UserController@edit']);
+$app->get('/user/{id}/edit',    [ 'as' => 'user.edit',               'uses' => 'UserController@edit']);
+$app->post('/user/{id}/update', [ 'as' => 'user.update',               'uses' => 'UserController@update']);
+$app->get('/user/{id}/delete', [ 'as' => 'user.delete',               'uses' => 'UserController@delete']);
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
 
