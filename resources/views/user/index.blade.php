@@ -18,7 +18,7 @@
                             <tr>
                                 <td>{!! $user->name !!}</td>
                                 <td>
-                                    <a href="" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a href="{!! route('user.edit', ['id'=>$user]) !!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
                                     <a href="" title="Novo comando"><i class="glyphicon glyphicon-flash"></i></a>
                                     <a href="" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
                                 </td>

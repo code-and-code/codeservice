@@ -9,10 +9,24 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     protected $category;
+    protected $language;
+    protected $langs  = [ 'pt-br' => ['active' => 'Ativado',   'show' => 'Ativado', 'disabled' => 'Desabilitado'],
+                          'eng'   => ['active' => 'activated', 'show' => 'activated', 'disabled' => 'Desabled', ],
+                        ];
 
-    public function __construct(Category $category)
+    public function __construct(Category $category, $language = 'pt-br')
     {
         $this->category = $category;
+        $this->setLanguage($language);
+    }
+
+    protected function setLanguage($lang)
+    {
+        if(!array_key_exists($lang,$this->langs))
+        {
+            throw new \Exception($lang.' not found');
+        }
+        $this->language = $lang;
     }
 
     protected function validation(array $request,$id = '')
@@ -25,20 +39,19 @@ class CategoryController extends Controller
 
     protected function enableDisable($id, $action = null)
     {
+        $actions  = ['active','show'];
+
+        if(!in_array($action,$actions))
+        {
+            throw new \Exception('Action not found');
+        }
+
         $category = $this->category->find($id);
         if($category)
         {
-                switch($action){
-                    case 'active':
-                        ($category->active) ? $category->active = false : $category->active = true;
-                        break;
-                    case 'show':
-                        ($category->show) ? $category->show = false : $category->show = true;
-                        break;
-                    default:
-                        throw new \Exception('Action not found');
-                }
-            return  $category->save();
+            ($category->$action) ? $category->$action = false : $category->$action = true ;
+            $category->save();
+            return $category;
         }
         else
         {
@@ -68,13 +81,11 @@ class CategoryController extends Controller
         }
     }
 
-
-
     public function edit($id)
     {
         try {
             return view("admin.category.edit")->with('category', $this->category->findOrFail($id));
-        } catch (\Exception $e) {
+            } catch (\Exception $e) {
             return redirect(route('category.index'))->with('error', ' ');
         }
     }
@@ -109,28 +120,20 @@ class CategoryController extends Controller
         return view('admin.category.show')->with('categories', $categories);
     }
 
-    public function active($id)
+    public function active($id, Request $request)
     {
+
+        $action = $request->get('action');
+
         try
         {
-            $this->enableDisable($id, 'active');
-            return redirect()->back()->with('status', 'Salvo');
+            $category = $this->enableDisable($id, $action);
+            ($category->$action) ? $msg = $this->langs[$this->language][$action] : $msg = $this->langs[$this->language]['disabled'];
+
+            return redirect()->back()->with('status', $msg);
         }catch (\Exception $e)
         {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
-
-    public function display($id)
-    {
-        try
-        {
-            $this->enableDisable($id, 'show');
-            return redirect()->back()->with('status', 'Salvo');
-        }catch (\Exception $e)
-        {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
-
 }

@@ -29,16 +29,24 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function edit($id)
+    {
+        try{
+            return view('user.edit')->with('user', $this->user->findOrFail($id));
+        }catch (\Exception $e){
+            return redirect(route('user.index'))->with('error', '');
+        }
+    }
+
     public function store(Request $resquest)
     {
-        $user = $this->user->create($resquest->all());
-        dd($user);
+        $this->user->create($resquest->all());
+        return redirect()->back()->with('status', 'Usuario Cadastrado');
     }
 
     public function show($id)
     {
         $user = $this->user->find($id);
-        dd($user);
         return $user;
     }
 

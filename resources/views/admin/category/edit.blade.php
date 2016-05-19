@@ -8,17 +8,23 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <a href="{!! route('category.index') !!}"> Categorias </a> | Editar
-                @if($category->active)
-                    <a href="{!! route('category.active',['id' => $category]) !!}" type="button" title="Desativar"><i class="pull-right glyphicon glyphicon-ban-circle"></i>  </a>
-                @else
-                    <a href="{!! route('category.active',['id' => $category]) !!}" type="button" title="Ativar"><i class="pull-right glyphicon glyphicon-ok-circle"></i>  </a>
-                @endif
 
-                @if($category->show)
-                    <a href="{!! route('category.display',['id' => $category]) !!}" type="button" title="Exibir"><i class="pull-right glyphicon glyphicon-eye-open"></i>  </a>
-                @else
-                    <a href="{!! route('category.display',['id' => $category]) !!}" type="button" title="Não Exibir"><i class="pull-right glyphicon glyphicon-eye-close"></i>  </a>
-                @endif
+                <a href="{!! route('category.active',['id' => $category]) !!}?action=active" type="button"
+                   @if($category->active)
+                        title="Desativar"><i class="pull-right glyphicon glyphicon-ok-circle"></i>
+                    @else
+                        title="Ativar"><i class="pull-right glyphicon glyphicon-ban-circle"></i>
+                    @endif
+                </a>
+
+
+                <a href="{!! route('category.active',['id' => $category])!!}?action=show" type="button"
+                   @if($category->show)
+                        title="Não Exibir"><i class="pull-right glyphicon glyphicon-eye-open"></i>
+                    @else
+                        title="Exibir"><i class="pull-right glyphicon glyphicon-eye-close"></i>
+                    @endif
+                </a>
             </div>
             <div class="panel-body">
 

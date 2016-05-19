@@ -14,13 +14,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Nome</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="name"/>
+                                    <input type="text" class="form-control" name="name" required autofocus/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-6">
-                                    <input type="email" class="form-control" name="email" required autofocus/>
+                                    <input type="email" class="form-control" name="email"/>
                                 </div>
                             </div>
                             <div class="form-group">
