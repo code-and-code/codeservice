@@ -81,12 +81,17 @@ class CommandController extends Controller
                       sleep(1);
             }
             $msg[]= "\nFeito.\n";
+
+            if($process->getPid() == 0)
+            {
+                throw  new \Exception('Falha ao Executar');
+            }
             return redirect()->back()->with('cmd',$msg);
 
 
         } catch (\Exception $e) {
 
-            return redirect()->back()->with('error', ' ');
+            return redirect()->back()->with('error', $e->getMessage());
         }
 
     }

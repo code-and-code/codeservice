@@ -94,13 +94,13 @@ class TaskController extends Controller
     protected function addCron(Task $task)
     {
         $job = $task->date.' '.$task->Command->command;
-        $this->cron->addJob($task->job);
+        $this->cron->addJob($job);
     }
 
     protected function removeCron(Task $task)
     {
         $job = $task->date.' '.$task->Command->command;
-        $this->cron->removeJob($task->job);
+        $this->cron->removeJob($job);
         $task->delete();
     }
     //
