@@ -9,7 +9,7 @@
         <form class="form-signin" method="post" action="">
             <span id="reauth-email" class="reauth-email"></span>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" minlength="5" maxlength="10" required>
             <div id="remember" class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
@@ -29,13 +29,11 @@
 
     body, html {
         height: 100%;
-        background-repeat: no-repeat;
-
     }
 
     .card-container.card {
         max-width: 350px;
-        padding: 40px 40px;
+        padding: 55px 40px;
     }
 
     .btn {

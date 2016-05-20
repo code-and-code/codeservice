@@ -15,7 +15,7 @@ $app->get('/services',          [ 'as' => 'services',   'uses' => 'HomeControlle
 $app->get('/services/find/{id}',[ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
 
 $app->get('/user',              [ 'as' => 'user.index',               'uses' => 'UserController@index']);
-$app->get('/user/login',        [ 'as' => 'user.login',               'uses' => 'UserController@login']);
+$app->get('/admin',             [ 'as' => 'user.login',               'uses' => 'UserController@login']);
 $app->get('/user/create',       [ 'as' => 'user.create',              'uses' => 'UserController@create']);
 $app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
 $app->get('/user/{id}/edit',    [ 'as' => 'user.edit',               'uses' => 'UserController@edit']);
@@ -24,7 +24,6 @@ $app->get('/user/{id}/delete', [ 'as' => 'user.delete',               'uses' => 
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
 
-    $app->get('category/',              [ 'as' => 'user.login',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/',              [ 'as' => 'category.index',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/create',        [ 'as' => 'category.create',        'uses' => 'CategoryController@create'       ]);
     $app->post('category/store',        [ 'as' => 'category.store',         'uses' => 'CategoryController@store'        ]);

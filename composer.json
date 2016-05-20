@@ -25,5 +25,9 @@
             "tests/",
             "database/"
         ]
+    },
+    "require": {
+        "laracasts/presenter": "0.1.*"
     }
+
 }
