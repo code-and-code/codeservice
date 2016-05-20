@@ -24,7 +24,7 @@ $app->get('/user/{id}/delete', [ 'as' => 'user.delete',               'uses' => 
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
 
-
+    $app->get('category/',              [ 'as' => 'user.login',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/',              [ 'as' => 'category.index',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/create',        [ 'as' => 'category.create',        'uses' => 'CategoryController@create'       ]);
     $app->post('category/store',        [ 'as' => 'category.store',         'uses' => 'CategoryController@store'        ]);

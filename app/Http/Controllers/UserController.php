@@ -58,7 +58,7 @@ class UserController extends Controller
         $validator = $this->validation($request->all());
         if($validator->fails())
         {
-            return redirect()->back()->with('error', 'Usuário ja existe');
+            return redirect()->back()->withInput()->withErrors($validator);;
         } else
         {
             $this->user->create($request->all());
