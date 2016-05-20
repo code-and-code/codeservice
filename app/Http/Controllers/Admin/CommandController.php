@@ -68,6 +68,7 @@ class CommandController extends Controller
 
     public function exec ($id)
     {
+
         try {
 
             $command = $this->command->findOrFail($id);
