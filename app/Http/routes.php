@@ -29,7 +29,6 @@ $app->post('/user/{id}/update', [ 'as' => 'user.update',              'uses' => 
 $app->get('/user/{id}/delete',  [ 'as' => 'user.delete',              'uses' => 'UserController@delete']);
 
 
-
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'middleware' => 'auth'], function ($app) {
 
     $app->get('/', function () {
