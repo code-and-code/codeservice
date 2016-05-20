@@ -23,7 +23,7 @@ Para criar as tabelas necessárias, basta rodar o comando:
 
     touch database/database.sqlite
     php artisan migrate
-    ph artisan db:seed --class=StartTableSeeder
+    php artisan db:seed --class=StartTableSeeder
 
 #### 4 - Gerar Key
 
