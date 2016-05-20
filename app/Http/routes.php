@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -9,20 +11,30 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/',                  [ 'as' => 'home',       'uses' => 'HomeController@index']);
+$app->get('/',                  [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
 $app->get('/categories',        [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
 $app->get('/services',          [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
 $app->get('/services/find/{id}',[ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
 
-$app->get('/user',              [ 'as' => 'user.index',               'uses' => 'UserController@index']);
-$app->get('/admin',             [ 'as' => 'user.login',               'uses' => 'UserController@login']);
-$app->get('/user/create',       [ 'as' => 'user.create',              'uses' => 'UserController@create']);
-$app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
-$app->get('/user/{id}/edit',    [ 'as' => 'user.edit',               'uses' => 'UserController@edit']);
-$app->post('/user/{id}/update', [ 'as' => 'user.update',               'uses' => 'UserController@update']);
-$app->get('/user/{id}/delete', [ 'as' => 'user.delete',               'uses' => 'UserController@delete']);
 
-$app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], function ($app) {
+$app->get('/auth/',             [ 'as' => 'auth.index',               'uses' => 'AuthController@index' ]);
+$app->post('/auth/login',       [ 'as' => 'auth.login',               'uses' => 'AuthController@login' ]);
+$app->get('/auth/logout',       [ 'as' => 'auth.logout',              'uses' => 'AuthController@logout']);
+
+$app->get('/user',              [ 'as' => 'user.index',               'uses' => 'UserController@index']);
+$app->get('/user/register',     [ 'as' => 'user.register',            'uses' => 'UserController@register']);
+$app->post('/user/store',       [ 'as' => 'user.store',               'uses' => 'UserController@store']);
+$app->get('/user/{id}/edit',    [ 'as' => 'user.edit',                'uses' => 'UserController@edit']);
+$app->post('/user/{id}/update', [ 'as' => 'user.update',              'uses' => 'UserController@update']);
+$app->get('/user/{id}/delete',  [ 'as' => 'user.delete',              'uses' => 'UserController@delete']);
+
+
+
+$app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'middleware' => 'auth'], function ($app) {
+
+    $app->get('/', function () {
+        return view('admin.index');
+    });
 
     $app->get('category/',              [ 'as' => 'category.index',         'uses' => 'CategoryController@index'        ]);
     $app->get('category/create',        [ 'as' => 'category.create',        'uses' => 'CategoryController@create'       ]);
@@ -54,6 +66,13 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin'], fu
     $app->get('command/exec/{id}',      [ 'as' => 'command.exec',             'uses' => 'CommandController@exec'        ]);
 
 
+    $app->get('task/create/{id}',    [ 'as' => 'task.create',           'uses' => 'TaskController@create'      ]);
+    $app->post('task/store',         [ 'as' => 'task.store',            'uses' => 'TaskController@store'       ]);
+    $app->get('task/show/{id}',      [ 'as' => 'task.show',             'uses' => 'TaskController@show'        ]);
+    $app->get('task/{id}/edit',      [ 'as' => 'task.edit',             'uses' => 'TaskController@edit'        ]);
+    $app->post('task/{id}/update',   [ 'as' => 'task.update',           'uses' => 'TaskController@update'      ]);
+    $app->get('task/{id}/delete',    [ 'as' => 'task.delete',           'uses' => 'TaskController@delete'      ]);
+ 
 });
 
 

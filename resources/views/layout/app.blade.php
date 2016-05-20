@@ -58,6 +58,13 @@
                 </div>
                 <button type="submit"  class="btn btn-primary glyphicon glyphicon-search"></button>
             </form>
+
+            @if (Auth::guest())
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{!! route('auth.index') !!}">Entrar</a></li>
+                </ul>
+            @else
+
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerenciar<span class="caret"></span></a>
@@ -66,74 +73,16 @@
                         <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
                         <li><a href="{{ url('/admin/service/') }}">Serviços</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Sair</a></li>
+                        <li><a href="{!! url('/auth/logout') !!}">Sair</a></li>
                     </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-
-
-            <!-- Right Side Of Navbar -->
-
-
-               {{--
-                <!-- Authentication Links
-                @if (Auth::guard('collaborator')->guest())
-
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            User <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href=""><i class="glyphicon glyphicon glyphicon-sort"></i> Trocar Compania</a></li>
-                            <li><a href=""><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                        </ul>
-
-                    </li>
-                @endif
-                        -->
-
-                --}}
-            </ul>
+            @endif
         </div>
     </div>
 </nav>
 
-
-@if (session('status'))
-    <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{session('status')}} :)
-    </div>
-@endif
-
-@if (session('error'))
-    <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        @if((session('error') == ' '))
-            Ops!! não foi possivel localizar :(
-        @else
-            {!!session('error') !!}
-        @endif
-    </div>
-@endif
-
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@include('layout._session_errors')
 
 
 @if (session('cmd'))

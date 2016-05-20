@@ -25,15 +25,49 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-primary">Editar</button>
-                                    <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar" class="btn btn-danger">Executar</a>
-                                </div>
+                                    <a href="{!! route('command.exec',['id' => $command])!!}"   title="Excutar" class="btn btn-danger">Executar</a>
+                                   </div>
                             </div>
 
                     </form>
                 </div>
             </div>
         </div>
+
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tarefas</div>
+                    <div class="panel-body">
+                        @include('admin.task.create',['command'=> $command->id])
+
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <th>Date</th>
+                                <th>Job</th>
+                                <th>#</th>
+                                </thead>
+                                <tbody>
+                                @foreach($command->Tasks as $task)
+
+                                    <tr>
+                                        <td> @include('admin.task._show_date',['dates' => explode(' ',$task->date)])</td>
+                                        <td>{!! $task->date !!} {!! $task->Command->command !!}</td>
+                                        <td>
+                                        <td>
+                                            <a href="{!! route('task.delete',['id' => $task])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
+                                        </td>
+                                        </td>
+                                    </tr>
+
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
-
 @endsection

@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function index()
     {
-       return redirect()->to('/categories');
+        return redirect()->to('/categories');
     }
 
     public function getCategories()

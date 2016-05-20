@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('job');
+            $table->string('date');
             $table->integer('command_id')->unsigned();
             $table->foreign('command_id')->references('id')->on('commands')->onDelete('cascade');
 
@@ -30,7 +30,7 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
+        Schema::drop('tasks', function (Blueprint $table) {
             //
         });
     }

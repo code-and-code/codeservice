@@ -27,7 +27,6 @@ $app->withFacades();
 $app->withEloquent();
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -61,6 +60,7 @@ $app->singleton(
 */
 
  $app->middleware([
+
     App\Http\Middleware\ExampleMiddleware::class,
     Illuminate\Cookie\Middleware\EncryptCookies::class,
     Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -68,9 +68,9 @@ $app->singleton(
     Illuminate\View\Middleware\ShareErrorsFromSession::class
  ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------

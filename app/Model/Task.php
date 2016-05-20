@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['job', 'command_id'];
+    protected $fillable = ['date', 'command_id'];
     protected $hidden   = ['updated_at'];
 
     public function Command()
