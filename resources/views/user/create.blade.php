@@ -26,7 +26,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Senha</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control" name="password" min="5" max="10" required/>
+                                    <input type="password" class="form-control" name="password" minlength="5" maxlength="10" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Confirmar Senha</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="password_confirmation" minlength="5" maxlength="10" required/>
                                 </div>
                             </div>
                             <div class="form-group">

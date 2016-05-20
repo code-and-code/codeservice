@@ -18,8 +18,9 @@ class UserController extends Controller
     {
         return \Validator::make($request,
             [
-                'name' => 'required|string|unique:categories,name,'.$id,
-                'email' => 'required|string|unique:categories,email'.$id
+                'name' => 'required|string|unique:users,name,'.$id,
+                'email' => 'required|string|unique:users,email'.$id,
+                'password' => 'required|string|min:5|confirmed'
             ]);
     }
 
@@ -52,27 +53,37 @@ class UserController extends Controller
         }
     }
 
-    public function store(Request $resquest)
+    public function store(Request $request)
     {
-        $this->user->create($resquest->all());
-        return redirect()->back()->with('status', 'Salvo');
-    }
-
-    public function update($id, Request $request)
-    {
-        $validator = $this->validation($request->all(), $id);
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        } else {
-            $this->user->find($id)->update($request->all());
+        $validator = $this->validation($request->all());
+        if($validator->fails())
+        {
+            return redirect()->back()->with('error', 'Usuário ja existe');
+        } else
+        {
+            $this->user->create($request->all());
             return redirect(route('user.index'))->with('status', 'Salvo');
         }
 
     }
 
+    public function update($id, Request $request)
+    {
+        $validator = $this->validation($request->all(), $id);
+        if ($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } else
+        {
+            $this->user->find($id)->update($request->all());
+            return redirect(route('user.index'))->with('status', 'Salvo');
+        }
+    }
+
     public function delete($id)
     {
         try{
+
             $this->user->find($id)->delete();
             return redirect(route('user.index'))->With('status', 'Salvo');
         }catch (\Exception $e){

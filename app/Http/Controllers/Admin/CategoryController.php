@@ -79,7 +79,6 @@ class CategoryController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         } else {
             $this->category->create($request->all());
-
             return redirect(route('category.index'))->with('status', 'Salvo');
         }
     }
