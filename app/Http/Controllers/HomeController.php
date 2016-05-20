@@ -29,11 +29,16 @@ class HomeController extends Controller
     {
         $services = Service::all();
         return view('home')->with('action', 'services')->with('data', $services);
+
     }
 
     public function getService($id)
     {
-        $service = Service::find($id);
-        return view('admin.service.show',compact('service'));
+        try{
+            $service = Service::findOrFail($id);
+            return view('admin.service.show',compact('service'));
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Categoria sem serviço');
+        }
     }
 }

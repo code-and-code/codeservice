@@ -31,6 +31,7 @@ $app->get('/user/{id}/delete',  [ 'as' => 'user.delete',              'uses' => 
 
 $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'middleware' => 'auth'], function ($app) {
 
+
     $app->get('/', function () {
         return view('admin.index');
     });
@@ -64,14 +65,13 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('command/{id}/delete',    [ 'as' => 'command.delete',           'uses' => 'CommandController@delete'      ]);
     $app->get('command/exec/{id}',      [ 'as' => 'command.exec',             'uses' => 'CommandController@exec'        ]);
 
-
     $app->get('task/create/{id}',    [ 'as' => 'task.create',           'uses' => 'TaskController@create'      ]);
     $app->post('task/store',         [ 'as' => 'task.store',            'uses' => 'TaskController@store'       ]);
     $app->get('task/show/{id}',      [ 'as' => 'task.show',             'uses' => 'TaskController@show'        ]);
     $app->get('task/{id}/edit',      [ 'as' => 'task.edit',             'uses' => 'TaskController@edit'        ]);
     $app->post('task/{id}/update',   [ 'as' => 'task.update',           'uses' => 'TaskController@update'      ]);
     $app->get('task/{id}/delete',    [ 'as' => 'task.delete',           'uses' => 'TaskController@delete'      ]);
- 
+
 });
 
 

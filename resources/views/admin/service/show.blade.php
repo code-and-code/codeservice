@@ -6,7 +6,7 @@
         <div class="bs-example" data-example-id="contextual-panels">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"> {!! $service->name !!} </h3>
+                    <h3 class="panel-title"> {!!$service->name !!} </h3>
                     <!--<i class="glyphicon glyphicon-share"></i>-->
                 </div>
 
