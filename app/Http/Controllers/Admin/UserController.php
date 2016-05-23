@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Model\User;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,12 @@ class UserController extends Controller
 
     public function index()
     {
-        return view("user.index")->with('users', $this->user->all());
+        return view("admin.user.index")->with('users', $this->user->all());
     }
 
     public function register()
     {
-        return view('user.create');
+        return view('admin.user.create');
     }
 
     public function store(Request $request)
@@ -60,7 +61,7 @@ class UserController extends Controller
     public function edit($id)
     {
         try {
-            return view('user.edit')->with('user', $this->user->findOrFail($id));
+            return view('admin.user.edit')->with('user', $this->user->findOrFail($id));
         } catch (\Exception $e) {
             return redirect(route('user.index'))->with('error', '');
         }
