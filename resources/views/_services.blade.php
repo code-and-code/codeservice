@@ -1,3 +1,5 @@
+
+
 @if($services->count())
 
     @foreach($services as $service)
@@ -8,6 +10,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title"> {!! $service->name !!} </h3>
+                            <h4 class="panel-title badge pull-right"> {!! $service->Category->name !!} </h4>
                             <!--<i class="glyphicon glyphicon-share"></i>-->
                         </div>
 
