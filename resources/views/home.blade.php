@@ -8,15 +8,16 @@
 
 @section('content')
 
-        <form method="post" action="{!! route($search.'.search') !!}" class="navbar" role="search">
-            <div class="input-group col-lg-6 center">
-                <input type="text" name="search" class="form-control" placeholder="Pesquisar {{$action}} ">
+    <form method="post" action="{!! route($action) !!}" class="navbar" role="search">
+        <div class="input-group col-lg-6 center">
+            <input type="text" name="search" class="form-control" placeholder="Pesquisar">
                 <span class="input-group-btn">
                     <button class="btn btn-secondary glyphicon glyphicon-search" type="submit"></button>
                 </span>
-            </div>
-        </form>
+        </div>
+    </form>
 
     @include('_'.$action,[$action => $data])
 
 @endsection
+

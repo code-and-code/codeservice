@@ -113,15 +113,6 @@ class CategoryController extends Controller
         }
     }
 
-    public function search(Request $request)
-    {
-        $name = $request->input('search');
-
-        $categories = $this->category->where('name', 'like', '%'.$name.'%')->get();
-
-        return view('admin.category.show')->with('categories', $categories);
-    }
-
     public function active($id, Request $request)
     {
 

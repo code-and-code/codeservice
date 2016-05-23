@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/',                  [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
-$app->get('/categories',        [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
-$app->get('/services',          [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
-$app->get('/services/find/{id}',[ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
+$app->get('/',                   [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
+$app->post('/categories',        [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
+$app->get('/categories',         [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
+$app->post('/services',          [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
+$app->get('/services',           [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
+$app->get('/services/find/{id}', [ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
 
 
 $app->get('/auth/',             [ 'as' => 'auth.index',               'uses' => 'AuthController@index' ]);
@@ -44,10 +46,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('category/{id}/edit',     [ 'as' => 'category.edit',            'uses' => 'CategoryController@edit'         ]);
     $app->post('category/{id}/update',  [ 'as' => 'category.update',          'uses' => 'CategoryController@update'       ]);
     $app->get('category/{id}/delete',   [ 'as' => 'category.delete',          'uses' => 'CategoryController@delete'       ]);
-    $app->post('category/search',       [ 'as' => 'category.search',          'uses' => 'CategoryController@search'       ]);
     $app->get('category/{id}/active',   [ 'as' => 'category.active',          'uses' => 'CategoryController@active'       ]);
-    $app->get('category/{id}/display',  [ 'as' => 'category.display',         'uses' => 'CategoryController@display'     ]);
-
 
     $app->get('service/',               [ 'as' => 'service.index',            'uses' => 'ServiceController@index'         ]);
     $app->get('service/create/{id}',    [ 'as' => 'service.create',           'uses' => 'ServiceController@create'        ]);

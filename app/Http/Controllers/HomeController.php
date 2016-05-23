@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use App\Model\Service;
+use Illuminate\Http\Request;
 
 
 class HomeController extends Controller
 {
+
     public function __construct()
     {
 
@@ -18,28 +20,39 @@ class HomeController extends Controller
         return redirect()->to('/categories');
     }
 
-    public function getCategories()
+    public function getCategories(Request $request)
     {
 
-        $categories = Category::where('show', 1)->where('active', 1)->get();
-        return view('home')->with('action', 'categories')->with('search', 'category')->with('data', $categories);
+        if($request->method() == 'get')
+        {
+            $categories = Category::where('show', 1)->where('active', 1)->get();
+        }else {
+            $name = $request->input('search');
+            $categories = Category::where('name', 'like', '%' . $name . '%')->get();
+        }
+        return view('home')->with('action', 'categories')->with('data', $categories);
     }
 
-    public function getServices()
+    public function getServices(Request $request)
     {
-        $services = Service::all();
-        return view('home')->with('action', 'services')->with('search', 'service')->with('data', $services);
-
+        if($request->method() == 'get')
+        {
+            $services = Service::all();
+        }else{
+            $name = $request->input('search');
+            $services = Service::where('name', 'like', '%'.$name.'%')->get();
+        }
+        return view('home')->with('action', 'services')->with('data', $services);
     }
 
     public function getService($id)
     {
         try{
-            $service = Service::findOrFail($id);
-            return view('admin.service.show',compact('service'));
+            $services = Service::where('category_id', $id)->get();
+
+            return view('home')->with('action', 'services')->with('data', $services);
         }catch (\Exception $e){
             return redirect()->back()->with('error', 'Categoria sem serviço');
         }
-
     }
 }
