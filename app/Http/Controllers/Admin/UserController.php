@@ -49,7 +49,7 @@ class UserController extends Controller
     {
         $validator = $this->validation($request->all());
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);;
+            return redirect()->back()->withInput()->withErrors($validator);
         } else {
 
             $this->create($request->all());

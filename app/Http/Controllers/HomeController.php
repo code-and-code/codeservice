@@ -28,7 +28,7 @@ class HomeController extends Controller
             $categories = Category::where('show', 1)->where('active', 1)->get();
         }else {
             $name = $request->input('search');
-            $categories = Category::where('name', 'like', '%' . $name . '%')->get();
+            $categories = Category::where('name', 'like', '%'.$name.'%')->OrderBy('name')->get();
         }
         return view('home')->with('action', 'categories')->with('data', $categories);
     }
@@ -40,7 +40,7 @@ class HomeController extends Controller
             $services = Service::all();
         }else{
             $name = $request->input('search');
-            $services = Service::where('name', 'like', '%'.$name.'%')->get();
+            $services = Service::where('name', 'like', '%'.$name.'%')->OrderBy('name')->get();
         }
         return view('home')->with('action', 'services')->with('data', $services);
     }
