@@ -52,13 +52,6 @@
                 <li><a href="{{ url('/services/') }}">Serviços</a></li>
             </ul>
 
-            <form method="post" action="{!! route('category.search') !!}" class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit"  class="btn btn-primary glyphicon glyphicon-search"></button>
-            </form>
-
             @if (Auth::guest())
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{!! route('auth.index') !!}">Entrar</a></li>

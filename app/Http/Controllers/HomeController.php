@@ -22,13 +22,13 @@ class HomeController extends Controller
     {
 
         $categories = Category::where('show', 1)->where('active', 1)->get();
-        return view('home')->with('action', 'categories')->with('data', $categories);
+        return view('home')->with('action', 'categories')->with('search', 'category')->with('data', $categories);
     }
 
     public function getServices()
     {
         $services = Service::all();
-        return view('home')->with('action', 'services')->with('data', $services);
+        return view('home')->with('action', 'services')->with('search', 'service')->with('data', $services);
 
     }
 
@@ -37,8 +37,9 @@ class HomeController extends Controller
         try{
             $service = Service::findOrFail($id);
             return view('admin.service.show',compact('service'));
-        }catch (\Exception $e) {
+        }catch (\Exception $e){
             return redirect()->back()->with('error', 'Categoria sem serviço');
         }
+
     }
 }

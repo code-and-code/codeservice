@@ -56,6 +56,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('service/{id}/edit',      [ 'as' => 'service.edit',             'uses' => 'ServiceController@edit'          ]);
     $app->post('service/{id}/update',   [ 'as' => 'service.update',           'uses' => 'ServiceController@update'        ]);
     $app->get('service/{id}/delete',    [ 'as' => 'service.delete',           'uses' => 'ServiceController@delete'        ]);
+    $app->post('service/search',        [ 'as' => 'service.search',           'uses' => 'ServiceController@search'        ]);
 
 
     $app->post('command/store',         [ 'as' => 'command.store',            'uses' => 'CommandController@store'       ]);

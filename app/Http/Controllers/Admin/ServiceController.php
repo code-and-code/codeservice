@@ -61,4 +61,13 @@ class ServiceController extends Controller
         }
         //return delete category database
     }
+
+    public function search(Request $request)
+    {
+        $name = $request->input('search');
+
+        $services = $this->service->where('name', 'like', '%'.$name.'%')->get();
+
+        return view('admin.service._show')->with('services', $services);
+    }
 }
