@@ -6,7 +6,6 @@
     <link href="/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
 @stop
 
-
 @section('content')
 <div class="container">
     <div class="row">

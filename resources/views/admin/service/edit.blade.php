@@ -49,7 +49,7 @@
                                 <td>
                                     <a href="{!! route('command.edit',['id' => $command])!!}" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
                                     <a href="{!! route('command.exec',['id' => $command])!!}" title="Excutar"><i class="glyphicon glyphicon-play-circle"></i></a>
-                                    <a href="{!! route('task.create', ['id' => $command])!!}" title="Agendar"><i class="glyphicon glyphicon-calendar"></i></a>
+                                    <!--<a href="" title="Agendar"><i class="glyphicon glyphicon-calendar"></i></a>-->
                                     <a href="{!! route('command.delete',['id' => $command])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
                                 </td>
                             </tr>
