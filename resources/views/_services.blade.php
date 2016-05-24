@@ -31,7 +31,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <a href="{!! $service->slug !!}">  Mais... </a>
+
+                            @if($service->Commands->count() > 3)
+                            <a href="/{!!$service->slug !!}">  Mais... </a>
+                            @endif
                         </div>
 
                     </div>
