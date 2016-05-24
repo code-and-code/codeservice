@@ -23,12 +23,12 @@ class HomeController extends Controller
     {
         try
         {
-            $service = Service::whereId($slug)->orWhere('name',$slug)->orWhere('slug',str_slug($slug))->first();
+            $service = Service::whereId($slug)->orWhere('name',$slug)->first();
             if(!$service)
             {
                 throw  new \Exception();
             }
-            //return view();
+            return view('');
         }
         catch (\Exception $e)
         {
@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function getCategories(Request $request)
     {
 
-        if($request->method() == 'get')
+        if($request->isMethod('get'))
         {
             $categories = Category::where('show', 1)->where('active', 1)->get();
         }else {
@@ -51,7 +51,7 @@ class HomeController extends Controller
 
     public function getServices(Request $request)
     {
-        if($request->method() == 'get')
+        if($request->isMethod('get'))
         {
             $services = Service::all();
         }else{
