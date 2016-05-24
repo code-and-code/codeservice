@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 | and give it the Closure to call when that URI is requested.
 |
 */
-$app->get('/',                   [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
 $app->post('/categories',        [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
 $app->get('/categories',         [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
 $app->post('/services',          [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
@@ -75,6 +74,10 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('task/{id}/delete',    [   'as' => 'task.delete',               'uses' => 'TaskController@delete'      ]);
 
 });
+
+
+$app->get('/{slug}',       [ 'as' => 'home',       'uses' => 'HomeController@Slug'             ]);
+$app->get('/',             [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
 
 
 

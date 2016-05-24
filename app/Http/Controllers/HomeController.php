@@ -6,7 +6,6 @@ use App\Model\Category;
 use App\Model\Service;
 use Illuminate\Http\Request;
 
-
 class HomeController extends Controller
 {
 
@@ -18,6 +17,23 @@ class HomeController extends Controller
     public function index()
     {
         return redirect()->to('/categories');
+    }
+
+    public function slug($slug)
+    {
+        try
+        {
+            $service = Service::whereId($slug)->orWhere('name',$slug)->first();
+            if(!$service)
+            {
+                throw  new \Exception();
+            }
+            //return view();
+        }
+        catch (\Exception $e)
+        {
+            return view('error.404');
+        }
     }
 
     public function getCategories(Request $request)
