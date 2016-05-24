@@ -5,22 +5,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="{!! route('service.index') !!}"> Serviços </a> | Editar</div>
+                <div class="panel-heading"><a href="{!! route('service.index') !!}"> Serviços </a> | Editar <a href="#" title="Slug" id="url" class="pull-right" >{!! $service->slug !!}</a><span id="location" class="pull-right"></span> </div>
                 <div class="panel-body">
 
                     <form method="post" action="{!! route('service.update',['id' => $service]) !!}" class="form-horizontal" role = 'form'>
+                            <input type="hidden" name="slug" id="slug" value="{!! $service->slug !!}"/>
 
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" name="name" id='name' value="{!! $service->name !!}"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Slug</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="slug" id="slug" value="{!! $service->slug !!}" readonly/>
                                 </div>
                             </div>
 
@@ -79,6 +73,20 @@
         <script>
 
             $(document).ready( function() {
+
+                $("#location").text('http://'+$(location).attr('host')+'/');
+                $("#name").stringToSlug({
+                    setEvents: 'keyup keydown blur',
+                    getPut: '#url',
+                    space: '-',
+                    prefix: '',
+                    suffix: '',
+                    replace: '',
+                    AND: 'and',
+                    options: {},
+                    callback: false
+                });
+
                 $("#name").stringToSlug({
                     setEvents: 'keyup keydown blur',
                     getPut: '#slug',
