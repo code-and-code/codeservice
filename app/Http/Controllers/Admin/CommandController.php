@@ -10,10 +10,12 @@ use Symfony\Component\Process\Process;
 class CommandController extends Controller
 {
     protected $command;
+    protected $path    = 'shells';
 
     public function __construct(Command $command)
     {
        $this->command = $command;
+       $this->path    = storage_path($this->path);
     }
 
     public function index()
@@ -95,5 +97,38 @@ class CommandController extends Controller
         }
 
     }
-    //
+
+    public function upload(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'file' => 'required',
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json(['errors' => $validator->getMessageBag()->toArray()], 500);
+        }
+        else
+        {
+            $file = $request->file('file');
+            $file = $file[0];
+
+            if ($file->isValid()) {
+                $file = $request->file('file')[0];
+
+                if ($file->isValid()) {
+
+                    $fileName = md5(microtime()).'.'.$file->getClientOriginalExtension(); //$file->getClientOriginalName(), $file->getRealPath();
+                    $filePath = $this->path.'/'.$fileName;
+
+                    $file->move($this->path, $fileName);
+                    //$this->command->create(['file_name' => $fileName]);
+                    return response()->json(['route' => route('command.edit',['id' => 1])], 200);
+                }
+
+                } else {
+                    return response()->json([], 500);
+                }
+            }
+        }
 }
