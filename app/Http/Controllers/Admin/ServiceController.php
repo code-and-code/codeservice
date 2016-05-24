@@ -27,12 +27,7 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        $this->service->create([
-                                'name'       => $request->input('name'),
-                                'slug'       => str_slug($request->input('name')),
-                                'category_id'=> $request->input('category_id')
-                                ]);
-
+        $this->service->create($request->all());
         return redirect()->back()->with('status', 'Salvo');
     }
 

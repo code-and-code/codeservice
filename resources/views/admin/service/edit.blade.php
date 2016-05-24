@@ -13,7 +13,14 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="name" value="{!! $service->name !!}"/>
+                                    <input type="text" class="form-control" name="name" id='name' value="{!! $service->name !!}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Slug</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="slug" id="slug" value="{!! $service->slug !!}" readonly/>
                                 </div>
                             </div>
 
@@ -62,8 +69,28 @@
             </div>
         </div>
     </div>
-
-
 </div>
-
 @endsection
+
+    @section('scripts')
+        @parent
+        <script src="/slug/jquery.stringtoslug.min.js"></script>
+        <script src="/slug/speakingurl.min.js"></script>
+        <script>
+
+            $(document).ready( function() {
+                $("#name").stringToSlug({
+                    setEvents: 'keyup keydown blur',
+                    getPut: '#slug',
+                    space: '-',
+                    prefix: '',
+                    suffix: '',
+                    replace: '',
+                    AND: 'and',
+                    options: {},
+                    callback: false
+                });
+            });
+
+        </script>
+@stop
