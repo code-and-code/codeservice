@@ -100,6 +100,7 @@ class CommandController extends Controller
 
     public function upload(Request $request)
     {
+
         $validator = \Validator::make($request->all(), [
             'file' => 'required',
         ]);
@@ -122,13 +123,20 @@ class CommandController extends Controller
                     $filePath = $this->path.'/'.$fileName;
 
                     $file->move($this->path, $fileName);
-                    //$this->command->create(['file_name' => $fileName]);
-                    return response()->json(['route' => route('command.edit',['id' => 1])], 200);
+                    $command = $this->command->create(['command' => 'bash '.$this->path.'/'.$fileName,
+                                                       'src' => $filePath,
+                                                       'file' => $fileName,
+                                                       'name' => $file->getClientOriginalName(),
+                                                       'service_id' => $request->input('service')
+                                                      ]);
+
+                    return response()->json(['route' => route('command.edit',['id' => $command])], 200);
                 }
 
-                } else {
+                } else
+                {
                     return response()->json([], 500);
                 }
-            }
         }
+    }
 }

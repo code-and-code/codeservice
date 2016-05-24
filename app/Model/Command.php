@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Command extends Model
 {
-    protected $fillable = ['name', 'command','service_id'];
+    protected $fillable = ['name', 'command','src','file','service_id'];
     protected $hidden   = ['updated_at'];
 
     public function Service()
