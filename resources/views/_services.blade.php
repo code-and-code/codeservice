@@ -1,5 +1,3 @@
-
-
 @if($services->count())
 
     @foreach($services as $service)
@@ -21,7 +19,7 @@
                                 <th></th>
                                 </thead>
                                 <tbody>
-                                @foreach($service->Commands as $command)
+                                @foreach($service->Commands->take(3) as $command)
 
                                     <tr>
                                         <td>{!! $command->name !!}</td>
@@ -33,6 +31,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <a href="{!! $service->slug !!}">  Mais... </a>
                         </div>
 
                     </div>

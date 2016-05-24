@@ -23,12 +23,14 @@ class HomeController extends Controller
     {
         try
         {
-            $service = Service::whereId($slug)->orWhere('name',$slug)->first();
-            if(!$service)
+            $service = Service::whereId($slug)->orWhere('name',$slug)->orWhere('slug', $slug)->first();
+
+            if($service)
             {
+                return view('admin.service.show', compact('service'));
+            }else{
                 throw  new \Exception();
             }
-            return view('');
         }
         catch (\Exception $e)
         {
