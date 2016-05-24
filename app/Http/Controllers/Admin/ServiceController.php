@@ -22,7 +22,7 @@ class ServiceController extends Controller
                 'category_id' => 'required|numeric'
             ]);
     }
-    
+
     public function index()
     {
         $services = $this->service->all();
@@ -44,8 +44,6 @@ class ServiceController extends Controller
             $this->service->create($request->all());
             return redirect()->back()->with('status', 'Salvo');
         }
-
-
     }
 
     public function edit($id)
@@ -59,8 +57,13 @@ class ServiceController extends Controller
 
     public function update($id, Request $request)
     {
-        $this->service->find($id)->update($request->all());
-        return redirect()->back()->with('status', 'Salvo');
+        $validator = $this->validation($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }else{
+            $this->service->find($id)->update($request->all());
+            return redirect()->back()->with('status', 'Salvo');
+        }
     }
 
     public function delete($id)
