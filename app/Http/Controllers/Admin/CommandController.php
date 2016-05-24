@@ -31,9 +31,8 @@ class CommandController extends Controller
 
     public function store(Request $request)
     {
-        $this->command->create($request->all());
+        $this->command->create($request->except('file'));
         return redirect()->back()->with('status', 'Salvo');
-        //return create category database
     }
 
     public function show($id)

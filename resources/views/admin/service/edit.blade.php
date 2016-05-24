@@ -25,7 +25,6 @@
                                     <button type="submit" class="btn btn-primary">Editar</button>
                                 </div>
                             </div>
-
                     </form>
                 </div>
             </div>
