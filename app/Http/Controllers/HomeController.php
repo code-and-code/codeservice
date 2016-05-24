@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Model\Category;
 use App\Model\Service;
 use Illuminate\Http\Request;
+use Monolog\Logger;
 
 class HomeController extends Controller
 {
 
     public function __construct()
     {
-
     }
 
     public function index()
@@ -27,7 +27,9 @@ class HomeController extends Controller
 
             if($service)
             {
+                \Log::info('Pesquisa SLUG realizada: '.$slug);
                 return view('admin.service.show', compact('service'));
+
             }else{
                 throw  new \Exception();
             }

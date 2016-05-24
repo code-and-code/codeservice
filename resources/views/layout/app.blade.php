@@ -65,6 +65,7 @@
                         <li><a href="{!! url('/admin/user/')!!}">Usuario</a></li>
                         <li><a href="{{ url('/admin/category/') }}">Categorias</a></li>
                         <li><a href="{{ url('/admin/service/') }}">Serviços</a></li>
+                        <li><a href="{{ url('/admin/logs/') }}">Logs</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{!! url('/auth/logout') !!}">Sair</a></li>
                     </ul>

@@ -9,8 +9,7 @@
         "laravel/lumen-framework": "5.1.*",
         "vlucas/phpdotenv": "~2.2",
         "twbs/bootstrap": "^3.3",
-        "cocur/background-process": "^0.5.0",
-        "laracasts/presenter": "0.1.*"
+        "cocur/background-process": "^0.5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

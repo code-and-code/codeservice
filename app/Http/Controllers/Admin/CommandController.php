@@ -82,9 +82,11 @@ class CommandController extends Controller
                       sleep(1);
             }
             $msg[]= "\nFeito.\n";
+            \Log::notice('Commando Excutado: '.$command->command);
 
             if($process->getPid() == 0)
             {
+                \Log::error('Falha Commando Excutado: '.$command->command);
                 throw  new \Exception('Falha ao Executar');
             }
             return redirect()->back()->with('cmd',$msg);

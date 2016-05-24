@@ -73,10 +73,15 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->post('task/{id}/update',      [ 'as' => 'task.update',              'uses' => 'TaskController@update'      ]);
     $app->get('task/{id}/delete',       [ 'as' => 'task.delete',               'uses' => 'TaskController@delete'      ]);
 
+    $app->get('logs/',                  [ 'as' => 'log.index',               'uses' => 'LogController@index'      ]);
+
 });
 
 $app->get('/{slug}',       [ 'as' => 'home',       'uses' => 'HomeController@Slug'             ]);
 $app->get('/',             [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
+
+
+
 
 
 
