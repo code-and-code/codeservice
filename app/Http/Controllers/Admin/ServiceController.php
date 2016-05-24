@@ -27,7 +27,12 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        $this->service->create($request->all());
+        $this->service->create([
+                                'name'       => $request->input('name'),
+                                'slug'       => str_slug($request->input('name')),
+                                'category_id'=> $request->input('category_id')
+                                ]);
+
         return redirect()->back()->with('status', 'Salvo');
     }
 
@@ -62,8 +67,9 @@ class ServiceController extends Controller
         //return delete category database
     }
 
-    public function search(Request $request)
+    protected function setSlug(Service $service)
     {
-
+        $slug    = str_slug($service->name);
+        dd($slug);
     }
 }

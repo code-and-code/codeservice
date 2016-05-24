@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
         try
         {
-            $service = Service::whereId($slug)->orWhere('name',$slug)->first();
+            $service = Service::whereId($slug)->orWhere('name',$slug)->orWhere('slug',str_slug($slug))->first();
             if(!$service)
             {
                 throw  new \Exception();

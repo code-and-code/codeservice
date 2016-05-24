@@ -71,7 +71,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('task/show/{id}',         [ 'as' => 'task.show',                'uses' => 'TaskController@show'        ]);
     $app->get('task/{id}/edit',         [ 'as' => 'task.edit',                'uses' => 'TaskController@edit'        ]);
     $app->post('task/{id}/update',      [ 'as' => 'task.update',              'uses' => 'TaskController@update'      ]);
-    $app->get('task/{id}/delete',    [   'as' => 'task.delete',               'uses' => 'TaskController@delete'      ]);
+    $app->get('task/{id}/delete',       [ 'as' => 'task.delete',               'uses' => 'TaskController@delete'      ]);
 
 });
 

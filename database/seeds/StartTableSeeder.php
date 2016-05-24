@@ -24,7 +24,7 @@ class StartTableSeeder extends Seeder
         Category::truncate();
 
         Category::create(['name'=>'Exemplo', 'show' => true])
-                    ->Services()->create(['name' =>'Backup'])
+                    ->Services()->create(['name' =>'Backup', 'slug' => str_slug('Backup')])
                     ->Commands()->create(['name' =>'Backup Sqlite Admin', 'command' =>'cp  ' .__DIR__.'/../database.sqlite   ' .__DIR__."/../bkp_database.sqlite"]);
     }
 }
