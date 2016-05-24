@@ -14,6 +14,15 @@ class ServiceController extends Controller
        $this->service = $service;
     }
 
+    protected function validation(array $request)
+    {
+        return \Validator::make($request,[
+                'name' => 'required|string',
+                'slug' => 'required|string',
+                'category_id' => 'required|numeric'
+            ]);
+    }
+    
     public function index()
     {
         $services = $this->service->all();
@@ -27,12 +36,15 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-        $this->service->create($request->all());
-        return redirect()->back()->with('status', 'Salvo');
-    }
+        $validator = $this->validation($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        else{
+            $this->service->create($request->all());
+            return redirect()->back()->with('status', 'Salvo');
+        }
 
-    public function show($id)
-    {
 
     }
 

@@ -31,6 +31,7 @@
         </div>
 
     <div class="col-md-8 col-md-offset-2">
+
         <div class="panel panel-default">
             <div class="panel-heading">Comandos  <a href="{!! route('command.create',['id'=>$service]) !!}" title="Nova categoria" ><i class="pull-right glyphicon glyphicon-plus"></i></a></div>
             <div class="panel-body">
