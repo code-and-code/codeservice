@@ -4,7 +4,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-success">
-                <div class="panel-heading"><h4>Tarefa</h4></div>
+
+                <div class="panel-heading">
+                    <a href="{!! route('command.edit',['id'=>$task]) !!}"><i class="glyphicon glyphicon-arrow-left"></i></a>
+                    <strong>Tarefa</strong>
+                </div>
+
 
                 <div class="panel-body">
                     <table class="table table-hover">
