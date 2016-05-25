@@ -31,9 +31,8 @@
             /* Set the fixed height of the footer here */
             height: 60px;
             background-color: #e0e0e0;
-        }
-        .ajuste {
-            margin: 20px 36% 0px;
+            text-align: center;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -110,7 +109,7 @@
     </div>
 
 <footer class="footer">
-    <div class="container ajuste">
+    <div class="container ">
         <p class="text-muted">Direitos Autorais © 2016 - <a href="http://codeandcode.com.br" target="_blank">{ CodeAndCode }</a>. Todos os direitos reservados ®. |
             <a class="btn btn-social-icon btn-sm btn-github">
                 <span class = "fa fa-github"> </span>
