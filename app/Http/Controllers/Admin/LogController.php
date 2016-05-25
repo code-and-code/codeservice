@@ -10,7 +10,6 @@ class LogController extends Controller
 {
     public function index(Request $request)
     {
-
         if ($request->input('l')) {
             Log::setFile(base64_decode($request->input('l')));
         }

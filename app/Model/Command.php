@@ -17,4 +17,12 @@ class Command extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    //delete Tasks Cascade Sqlite
+    function delete()
+    {
+        \Log::critical('Commando: "'.  $this->name .'" foi excluida pelo Usuario: '. \Auth::user()->name);
+        $this->Tasks()->delete();
+        parent::delete();
+    }
 }

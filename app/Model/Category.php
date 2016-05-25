@@ -13,4 +13,12 @@ class Category extends Model
         return $this->hasMany(Service::class);
     }
 
+    //delete Services Cascade Sqlite
+    function delete()
+    {
+        \Log::critical('Cetegoria: "'.$this->name .'" foi excluida pelo Usuario: '. \Auth::user()->name);
+        $this->Services()->delete();
+        parent::delete();
+    }
+
 }

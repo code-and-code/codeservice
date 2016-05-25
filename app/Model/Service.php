@@ -17,4 +17,12 @@ class Service extends Model
     {
         return $this->hasMany(Command::class);
     }
+
+    //delete Commands Cascade Sqlite
+    function delete()
+    {
+        \Log::critical('Serviço: "'.$this->name .'" foi excluida pelo Usuario: '. \Auth::user()->name);
+        $this->Commands()->delete();
+        parent::delete();
+    }
 }
