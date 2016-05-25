@@ -6,6 +6,7 @@ use App\Model\Command;
 use Illuminate\Http\Request;
 use Cocur\BackgroundProcess\BackgroundProcess;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\File;
 
 class CommandController extends Controller
 {
@@ -58,12 +59,17 @@ class CommandController extends Controller
     public function delete($id)
     {
         try {
-            $this->command->findOrFail($id)->delete();
+            $command = $this->command->findOrFail($id);
+            if(!is_null($command->file))
+            {
+                File::delete(storage_path($command->src).'/'.$command->file);
+            }
+            $command->delete();
+
             return redirect()->back()->with('status', 'Excluido');
         } catch (\Exception $e) {
-            return redirect(route('category.index'))->with('error', ' ');
+            return redirect()->back()->with('error', ' ');
         }
-        //return delete category database
     }
 
     public function exec ($id)
@@ -144,5 +150,26 @@ class CommandController extends Controller
         $file = storage_path($command->src).'/'.$command->file;
         $process = new BackgroundProcess('chmod +x '.$file);
         $process->run();
+    }
+
+    public function file($id, Request $request)
+    {
+        try{
+            $command = $this->command->findOrFail($id);
+
+            if($request->get('action') == 'del' )
+            {
+                return $this->delete($command->id);
+
+            }else
+            {
+                return response()->download(storage_path($command->src).'/'.$command->file);
+            }
+
+           }
+        catch (\Exception $e){
+
+            return redirect()->back()->with('error', ' ');
+        }
     }
 }
