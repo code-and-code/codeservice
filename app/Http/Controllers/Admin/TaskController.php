@@ -51,13 +51,16 @@ class TaskController extends Controller
         {
             $task = $this->task->create(['date' =>$this->setDate($request->all()), 'command_id' => $request->input('command_id')]);
             $this->addCron($task);
+
             return redirect()->back()->with('status', 'Gravado/Adiconado seu CRONTAB');
         }
     }
 
     public function show($id)
     {
+        $task = $this->task->find($id);
 
+        return view('admin.task.show',compact('task'));
     }
 
     public function edit($id)
@@ -71,10 +74,11 @@ class TaskController extends Controller
 
     public function update($id, Request $request)
     {
-        /*
+
         $this->command->find($id)->update($request->all());
+
         return redirect()->back()->with('status', 'Salvo');
-        */
+
     }
 
     public function delete($id)
@@ -94,6 +98,7 @@ class TaskController extends Controller
     protected function addCron(Task $task)
     {
         $job = $task->date.' '.$task->Command->command;
+        $task->update(['cron'=>$job]);
         $this->cron->addJob($job);
     }
 

@@ -7,9 +7,9 @@
 @stop
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
+
+        <div class="col-md-9 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading"><a href="{!! route('service.edit', ['id'=>$command]) !!}"> Comando </a> | Editar</div>
                 <div class="panel-body">
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-9 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Tarefas</div>
                     <div class="panel-body">
@@ -91,8 +91,7 @@
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thead>
-                                <th>Date</th>
-                                <th>Job</th>
+                                <th>Agendamento</th>
                                 <th>#</th>
                                 </thead>
                                 <tbody>
@@ -100,11 +99,10 @@
 
                                     <tr>
                                         <td> @include('admin.task._show_date',['dates' => explode(' ',$task->date)])</td>
-                                        <td>{!! $task->date !!} {!! $task->Command->command !!}</td>
+
                                         <td>
-                                        <td>
+                                            <a href="{!! route('task.show',['id'=>$task]) !!}" title="Detalhes"><i class="glyphicon glyphicon-eye-open"></i></a>
                                             <a href="{!! route('task.delete',['id' => $task])!!}" title="Excluir"><i class="glyphicon glyphicon-trash"></i></a>
-                                        </td>
                                         </td>
                                     </tr>
 
@@ -116,6 +114,6 @@
                     </div>
                 </div>
             </div>
-    </div>
-</div>
+
+
 @endsection

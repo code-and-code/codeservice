@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="bs-example" data-example-id="contextual-panels">
@@ -36,4 +37,5 @@
             </div>
         </div>
     </div>
+
 @endsection

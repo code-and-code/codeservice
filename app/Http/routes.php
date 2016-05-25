@@ -17,7 +17,6 @@ $app->post('/services',          [ 'as' => 'services',   'uses' => 'HomeControll
 $app->get('/services',           [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
 $app->get('/services/find/{id}', [ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
 
-
 $app->get('/auth/',             [ 'as' => 'auth.index',               'uses' => 'AuthController@index' ]);
 $app->post('/auth/login',       [ 'as' => 'auth.login',               'uses' => 'AuthController@login' ]);
 $app->get('/auth/logout',       [ 'as' => 'auth.logout',              'uses' => 'AuthController@logout']);

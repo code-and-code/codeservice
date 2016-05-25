@@ -16,6 +16,7 @@ class CreateTasksTable extends Migration
 
             $table->increments('id');
             $table->string('date');
+            $table->string('cron')->nullable();
             $table->integer('command_id')->unsigned();
             $table->foreign('command_id')->references('id')->on('commands')->onDelete('cascade');
 
