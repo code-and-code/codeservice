@@ -8,12 +8,14 @@
 
 @section('content')
 
-    <form method="post" action="{!! route($action) !!}" class="navbar" role="search">
-        <div class="input-group col-lg-6 center">
-            <input type="text" name="search" class="form-control" placeholder="Pesquisar">
+    <form method="post" action="{!! route($action) !!}" class="navbar " role="search">
+        <div class="row">
+            <div class="col-lg-8 input-group center">
+                <input type="text" name="search" class="form-control" placeholder="Pesquisar">
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary glyphicon glyphicon-search" type="submit"></button>
-                </span>
+                    <button class="btn btn-default" type="submit">Pesquisar</button>
+                 </span>
+            </div>
         </div>
     </form>
 
