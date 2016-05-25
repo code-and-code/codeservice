@@ -80,9 +80,6 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
 
 $app->get('/{slug}',       [ 'as' => 'home',       'uses' => 'HomeController@Slug'             ]);
 $app->get('/',             [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
-$app->get('/helper', function(){
-    return view('helper');
-});
 
 
 
