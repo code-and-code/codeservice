@@ -12,4 +12,11 @@ class Task extends Model
     {
        return $this->belongsTo(Command::class);
     }
+
+    //delete Task
+    function delete()
+    {
+        \Log::critical('Tarefa: "'.  $this->name .'" foi excluida pelo Usuario: '. \Auth::user()->name);
+        parent::delete();
+    }
 }
