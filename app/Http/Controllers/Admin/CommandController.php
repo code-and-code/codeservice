@@ -73,7 +73,6 @@ class CommandController extends Controller
         try {
 
             $command = $this->command->findOrFail($id);
-
             $process = new BackgroundProcess($command->command);
             $process->run();
 
