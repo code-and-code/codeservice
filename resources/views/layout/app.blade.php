@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js">
+    <link rel="stylesheet" href="/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="/bootstrap-social/assets/css/font-awesome.css">
+
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet" type="text/css">
 
     @show
@@ -19,14 +22,23 @@
     <style>
         body {
             font-family: 'Lato';
+            margin-bottom: 60px;
         }
-
-        .fa-btn {
-            margin-right: 6px;
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #e0e0e0;
+        }
+        .ajuste {
+            margin: 20px 36%;
         }
     </style>
 </head>
 <body id="app-layout">
+
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -96,6 +108,24 @@
     <div class="container">
         @yield('content')
     </div>
+
+<footer class="footer">
+
+    <div class="container ajuste">
+        <p class="text-muted">Direitos Autorais © 2016 - <a href="http://codeandcode.com.br" target="_blank">{ CodeAndCode }</a>. Todos os direitos reservados ®. |
+            <a class="btn btn-social-icon btn-sm btn-github">
+                <span class = "fa fa-github"> </span>
+            </a>
+            <a class="btn btn-social-icon btn-sm btn-facebook">
+                <span class = "fa fa-facebook"> </span>
+            </a>
+            <a class="btn btn-social-icon btn-sm btn-google">
+                <span class = "fa fa-google"> </span>
+            </a>
+
+        </p>
+    </div>
+</footer>
 
     @section('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
