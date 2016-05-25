@@ -122,7 +122,6 @@
             <a class="btn btn-social-icon btn-sm btn-google">
                 <span class = "fa fa-google"> </span>
             </a>
-
         </p>
     </div>
 </footer>
