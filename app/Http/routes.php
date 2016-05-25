@@ -64,6 +64,7 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
     $app->get('command/{id}/delete',    [ 'as' => 'command.delete',           'uses' => 'CommandController@delete'      ]);
     $app->get('command/exec/{id}',      [ 'as' => 'command.exec',             'uses' => 'CommandController@exec'        ]);
     $app->post('command/upload',        [ 'as' => 'command.upload',           'uses' => 'CommandController@upload'      ]);
+    $app->get('command/file/{id}',      [ 'as' => 'command.file',             'uses' => 'CommandController@file'        ]);
 
     $app->get('task/create/{id}',       [ 'as' => 'task.create',              'uses' => 'TaskController@create'      ]);
     $app->post('task/store',            [ 'as' => 'task.store',               'uses' => 'TaskController@store'       ]);

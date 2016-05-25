@@ -11,7 +11,7 @@
 
         <div class="col-md-9 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><a href="{!! route('service.edit', ['id'=>$command]) !!}"> Comando </a> | Editar</div>
+                <div class="panel-heading"><a href="{!! route('service.edit', ['id'=>$command->service_id]) !!}"> Comando </a> | Editar</div>
                 <div class="panel-body">
 
                     <form method="post" action="{!! route('command.update',['id' => $command]) !!}" class="form-horizontal" role = 'form'>
@@ -58,12 +58,12 @@
                                                         <div class="jFiler-item-assets jFiler-row">
                                                             <ul class="list-inline pull-left">
                                                                 <li>
-                                                                    <a href="" class="icon-jfi-file-image jfi-file-ext-png"></a>
+                                                                    <a href="{!! route('command.file',['id' => $command]) !!}" class="icon-jfi-file-image jfi-file-ext-png"></a>
                                                                 </li>
                                                             </ul>
                                                             <ul class="list-inline pull-right">
                                                                 <li>
-                                                                    <a href="" data-method="delete" class="icon-jfi-trash jFiler-item-trash-action"></a>
+                                                                    <a href="{!! route('command.file',['id' => $command]) !!}?action=del" data-method="delete" class="icon-jfi-trash jFiler-item-trash-action"></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
