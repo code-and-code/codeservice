@@ -15,7 +15,6 @@ class CommandController extends Controller
     public function __construct(Command $command)
     {
        $this->command = $command;
-       $this->path    = storage_path($this->path);
     }
 
     public function index()
@@ -120,16 +119,16 @@ class CommandController extends Controller
                 if ($file->isValid()) {
 
                     $fileName = md5(microtime()).'.'.$file->getClientOriginalExtension(); //$file->getClientOriginalName(), $file->getRealPath();
-                    $filePath = $this->path.'/'.$fileName;
-
-                    $file->move($this->path, $fileName);
-                    $command = $this->command->create(['command' => 'bash '.$this->path.'/'.$fileName,
-                                                       'src' => $filePath,
+                    $file->move(storage_path($this->path), $fileName);
+                    $command = $this->command->create(['command' => 'bash '.storage_path($this->path).'/'.$fileName,
+                                                       'src' => $this->path,
                                                        'file' => $fileName,
                                                        'name' => $file->getClientOriginalName(),
                                                        'service_id' => $request->input('service')
                                                       ]);
 
+                    $this->permissionCommand($command);
+                    
                     return response()->json(['route' => route('command.edit',['id' => $command])], 200);
                 }
 
@@ -138,5 +137,12 @@ class CommandController extends Controller
                     return response()->json([], 500);
                 }
         }
+    }
+
+    protected function permissionCommand(Command $command)
+    {
+        $file = storage_path($command->src).'/'.$command->file;
+        $process = new BackgroundProcess('chmod +x '.$file);
+        $process->run();
     }
 }
