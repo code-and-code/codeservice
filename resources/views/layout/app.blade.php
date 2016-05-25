@@ -111,7 +111,7 @@
 <footer class="footer">
     <div class="container ">
         <p class="text-muted">Direitos Autorais © 2016 - <a href="http://codeandcode.com.br" target="_blank">{ CodeAndCode }</a>. Todos os direitos reservados ®. |
-            <a class="btn btn-social-icon btn-sm btn-github">
+            <a href="https://github.com/code-and-code?tab=repositories" target="_blank" class="btn btn-social-icon btn-sm btn-github">
                 <span class = "fa fa-github"> </span>
             </a>
             <a class="btn btn-social-icon btn-sm btn-facebook">
