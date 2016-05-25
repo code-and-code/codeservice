@@ -24,8 +24,8 @@ echo " 5 Criando Registros.."
 
 php artisan db:seed --class=StartTableSeeder
 
-echo "5 - Server Start"
+echo "6 - Server Start"
 
-echo "6 - Dados do usuario , email :admin@admin.com, senha: admin"
+echo "7 - Dados do usuario , email :admin@admin.com, senha: admin"
 
-php -S localhost:8080 -t ./public/
+php -S localhost:8080 -t ./public

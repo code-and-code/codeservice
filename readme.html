@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Help</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+
+            <h1 xmlns="http://www.w3.org/1999/html">Help</h1>
+
+            <h3>Dependências do Projeto</h3><br/>
+
+            <h4>Requisitos necessários</h4>
+            <ul>
+                <li>php 5.5.9</li>
+                <li>composer</li>
+            </ul>
+
+            <h4><a href="https://github.com/angelobiscola/config-ambient">Instalação de Requisitos</a></h4></br>
+
+            <h2>Instalação Automática</h2>
+            <p>Para instalação automática das dependências do projeto, execute o seguinte comando:</br>
+                <h4><i>bash install.sh</i></h4>
+
+            </p>
+
+            <h2>Instalação Manual</h2>
+
+            <ul>
+                <p>Para instalar as dependências do projeto, execute o seguinte comando:</br>
+                    <h4><i>composer install</i></h4>
+                </p>
+
+                <h2>Migrações</h2>
+
+                <p>Para criar as tabelas necessárias, basta rodar o comando:
+                <ul>
+                    <li>touch database/database.sqlite</li>
+                    <li>php artisan migrate</li>
+                    <li>php artisan db:seed --class=StartTableSeeder</li>
+                </ul>
+
+                <h2>Gerar Key</h2>
+
+                <p>Precismos de uma key 32 bits, pode usar seguinte site</p>
+
+                <a href="http://textmechanic.com/text-tools/randomization-tools/random-string-generator/" target="_blank">http://textmechanic.com/text-tools/randomization-tools/random-string-generator/</a>
+
+                <h2>Server Start</h2>
+
+                <p>Para inicar o APP php artisan</p>
+
+                <p>
+                    <ul>
+                        <li>php artisan serve -> http://localhost:8000</li>
+                        <li>php artisan server --host "ip" --port "30" -> http://ip:port</li>
+                        <li>php -S localhost:8090 -t ./public/</li>
+                   </ul>
+                <p/>
+
+                <h2>Configuracao .env</h2>
+
+                <p>Para criar arquivo .env, basta rodar o comando:  cp .env.example .env</p>
+                <ul>
+                    <li>APP_ENV=local</li>
+                    <li>APP_DEBUG=false</li>
+                    <li>APP_KEY=SomeRandomKey!!!</li>
+
+
+                    <li>AUTH_DRIVE=eloquent</li>
+                    <li>AUTH_MODEL=\App\Model\User</li>
+                    <li>AUTH_TABLE=users</li>
+
+                    <li>DB_CONNECTION=sqlite</li>
+
+                    <li>SESSION_DRIVER=cookie</li>
+                    <li>CACHE_DRIVER=file</li>
+                    <li>QUEUE_DRIVER=sync</li>
+                </ul>
+            </ul>
+        </div>
+    </body>
+</html>
