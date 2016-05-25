@@ -17,18 +17,26 @@
                         <form method="post" action="{!! route('command.store') !!}" class="form-horizontal">
                                 <input type="hidden" name="service_id"  id="service_id" value="{!! $id !!}"/>
 
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
+                                <div class="form-group command_show">
+                                    <label class="col-sm-2 control-label">Nome</label>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" name="name" id="name_str"/>
                                     </div>
                                 </div>
-                                <div class="form-group" id="command_show">
+                                <div class="form-group command_show">
                                      <label class="col-sm-2 control-label">Comando</label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" name="command"/>
                                         </div>
                                 </div>
+
+                                <div class="form-group command_show">
+                                    <label class="col-sm-2 control-label">Descrição</label>
+                                    <div class="col-sm-6">
+                                       <textarea class="form-control" rows="5" name="description"></textarea>
+                                    </div>
+                                </div>
+
                                 <div class="form-group" id="file_show" style="display:none">
                                       <label class="col-sm-2 control-label">Arquivo</label>
                                         <div class="col-sm-6">
@@ -62,7 +70,7 @@
 
             $("#button_show").click(function(){
                 $("#file_show").toggle();
-                $("#command_show").toggle();
+                $(".command_show").toggle();
             });
 
             var lastUrl = document.referrer;

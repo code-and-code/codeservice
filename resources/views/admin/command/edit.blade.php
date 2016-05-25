@@ -30,6 +30,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group command_show">
+                                <label class="col-sm-2 control-label">Descrição</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" rows="5" name="description">{!! $command->description !!}</textarea>
+                                </div>
+                            </div>
+
                             @if(!is_null($command->file))
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Arquivo</label>

@@ -14,6 +14,7 @@ class CreateCommandsTable extends Migration
             $table->string('command')->nullable();
             $table->string('src')->nullable();
             $table->string('file')->nullable();
+            $table->string('description')->nullable();
 
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
