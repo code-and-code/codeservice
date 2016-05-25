@@ -1,37 +1,33 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Support\Log;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Response;
-use Laravel\Lumen\Routing\Controller;
-use App\Support\LaravelLogViewer;
 
 class LogController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
 
-        if (Request::input('l')) {
-            LaravelLogViewer::setFile(base64_decode(Request::input('l')));
+        if ($request->input('l')) {
+            Log::setFile(base64_decode($request->input('l')));
         }
 
-        if (Request::input('dl')) {
-            return Response::download(LaravelLogViewer::pathToLogFile(base64_decode(Request::input('dl'))));
-        } elseif (Request::has('del')) {
-            File::delete(LaravelLogViewer::pathToLogFile(base64_decode(Request::input('del'))));
-            return Redirect::to(Request::url());
+        if ($request->input('dl')) {
+            return response()->download(Log::pathToLogFile(base64_decode($request->input('dl'))));
+        } elseif ($request->has('del')) {
+            File::delete(Log::pathToLogFile(base64_decode($request->input('del'))));
+            return redirect()->to($request->url());
         }
 
-        $logs = LaravelLogViewer::all();
+        $logs = Log::all();
 
-        return View::make('admin.log.log', [
+        return view('admin.log.log', [
             'logs' => $logs,
-            'files' => LaravelLogViewer::getFiles(true),
-            'current_file' => LaravelLogViewer::getFileName()
+            'files' => Log::getFiles(true),
+            'current_file' => Log::getFileName()
         ]);
     }
 }
