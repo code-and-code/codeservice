@@ -16,13 +16,7 @@ class StartTableSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
         User::create(['name' => 'Admin','email'=>'admin@admin.com','password' => '$2y$10$2grFZNn.z8T70plC9Y2cteq2CraZy722NKwRvmq40ennKd10bSPR.']);
-
-        Command::truncate();
-        Service::truncate();
-        Category::truncate();
-
         Category::create(['name'=>'Exemplo', 'show' => true])
                     ->Services()->create(['name' =>'Backup', 'slug' => str_slug('Backup')])
                     ->Commands()->create(['name' =>'Backup Sqlite Admin', 'command' =>'cp  ' .__DIR__.'/../database.sqlite   ' .__DIR__."/../bkp_database.sqlite"]);
