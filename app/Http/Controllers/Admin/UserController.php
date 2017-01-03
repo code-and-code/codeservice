@@ -69,13 +69,16 @@ class UserController extends Controller
 
     public function update($id, Request $request)
     {
-       dd($request->all());
-        
         $validator = $this->validation($request->all(), $id);
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         } else {
+            
+            dd( $this->user->find($id));
+            
             $this->user->find($id)->update($request->all());
+           
+            
             return redirect(route('user.index'))->with('status', 'Salvo');
         }
     }
