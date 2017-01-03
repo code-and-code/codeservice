@@ -21,7 +21,7 @@ class UserController extends Controller
         return \Validator::make($request,
             [
                 'name' => 'required|string|unique:users,name,' . $id,
-                'email' => 'required|string|unique:users,email' . $id,
+                'email' => 'required|string|unique:users,email,' . $id,
                 'password' => 'required|string|min:5|confirmed'
             ]);
     }
@@ -73,12 +73,8 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         } else {
-            
-            dd( $this->user->find($id));
-            
-            $this->user->find($id)->update($request->all());
            
-            
+            $this->user->find($id)->update($request->all());
             return redirect(route('user.index'))->with('status', 'Salvo');
         }
     }
