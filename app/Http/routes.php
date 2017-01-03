@@ -1,11 +1,11 @@
 <?php
 use Illuminate\Http\Request;
 
-$app->post('/categories',        [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
-$app->get('/categories',         [ 'as' => 'categories', 'uses' => 'HomeController@getCategories'    ]);
-$app->post('/services',          [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
-$app->get('/services',           [ 'as' => 'services',   'uses' => 'HomeController@getServices'      ]);
-$app->get('/services/find/{id}', [ 'as' => 'getservices','uses' => 'HomeController@getService'       ]);
+$app->post('/categories',        [ 'as' => 'categories', 'middleware' => 'auth','uses' => 'HomeController@getCategories'    ]);
+$app->get('/categories',         [ 'as' => 'categories', 'middleware' => 'auth','uses' => 'HomeController@getCategories'    ]);
+$app->post('/services',          [ 'as' => 'services',   'middleware' => 'auth','uses' => 'HomeController@getServices'      ]);
+$app->get('/services',           [ 'as' => 'services',   'middleware' => 'auth','uses' => 'HomeController@getServices'      ]);
+$app->get('/services/find/{id}', [ 'as' => 'getservices','middleware' => 'auth','uses' => 'HomeController@getService'       ]);
 
 $app->get('/auth/',             [ 'as' => 'auth.index',               'uses' => 'AuthController@index' ]);
 $app->post('/auth/login',       [ 'as' => 'auth.login',               'uses' => 'AuthController@login' ]);
@@ -67,8 +67,8 @@ $app->group(['namespace' => 'App\Http\Controllers\Admin','prefix' =>'admin' ,'mi
 
 });
 
-$app->get('/{slug}',       [ 'as' => 'home',       'uses' => 'HomeController@Slug'             ]);
-$app->get('/',             [ 'as' => 'home',       'uses' => 'HomeController@index'            ]);
+$app->get('/{slug}',       [ 'as' => 'home',       'middleware' => 'auth','uses' => 'HomeController@Slug'             ]);
+$app->get('/',             [ 'as' => 'home',       'middleware' => 'auth','uses' => 'HomeController@index'            ]);
 
 
 
