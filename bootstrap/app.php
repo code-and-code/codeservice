@@ -23,8 +23,10 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
+Dotenv::load();
 $app->withFacades();
 $app->withEloquent();
+
 
 
 /*
